@@ -1,0 +1,62 @@
+---
+title: "data_processing"
+output: html_document
+---
+```{r message=FALSE, warning=FALSE}
+# initializing
+#rm(list = ls())
+library(dplyr)
+data = read.csv('data_anonymized.csv')
+```
+
+# Cleaning
+```{r}
+data$completion_time_numeric <- as.numeric(data$completion.time)
+Q1 <- quantile(data$completion_time_numeric, 0.25)
+Q3 <- quantile(data$completion_time_numeric, 0.75)
+IQR <- Q3 - Q1
+
+lower_bound <- Q1 - 1.5 * IQR
+upper_bound <- Q3 + 1.5 * IQR
+
+outlier_indices <- which(data$completion_time_numeric < lower_bound | data$completion_time_numeric > upper_bound)
+```
+
+One sample of suspicious rating pattern was removed after analysis of outliers for short completion time, who rated all the 9 questions in the range of 39 to 42, which indicates a casual rating across all the questions.
+
+```{r}
+data.cleaned = data[-38,]
+```
+
+```{r}
+data.processed <- data.cleaned %>%
+  mutate(sd02_decentering99 = (sd02_decentering99_down + sd02_decentering99_up) / 2, sd04_decentering99 = (sd04_decentering99_down + sd04_decentering99_up) / 2,sd06_decentering99 = (sd06_decentering99_down + sd06_decentering99_up) / 2)
+data.save = data.processed[,c(1,3,4,7,10,13,15,16,17)]
+write.csv(data.save,'data_processed.csv')
+```
+
+# Plot
+```{r}
+library(ggplot2)
+data.mask = data.save[,c(-4,-9)]
+data_long <- reshape2::melt(data.mask, id.vars = c("id", "sex", "age"), variable.name = "Condition", value.name = "Score")
+data_long$Noise <- paste0("0.",gsub("sd0([2|4|6])_decentering.*", "\\1", data_long$Condition))
+data_long$Decentering <- ifelse(grepl("decentering0$", data_long$Condition), "0", "99")
+
+summary_df <- data_long %>%
+  group_by(Noise, Decentering) %>%
+  summarise(Mean = mean(Score), SE = sd(Score) / sqrt(n()), .groups = "drop")
+
+p <- ggplot(summary_df, aes(x = Noise, y = Mean, group = Decentering, shape = Decentering, color = Decentering)) +
+  geom_point(size = 2) +
+  geom_line() +
+  geom_errorbar(aes(ymin = Mean - 1.96 * SE, ymax = Mean + 1.96 * SE), width = 0.1) +
+  theme_minimal() +
+  labs(x = "Noise level in SD", y = "Fit Rating")+
+  scale_shape_manual(values = c("0" = 16, "99" = 17))+
+  scale_color_manual(values = c("0" = "blue", "99" = "red"))
+
+ggsave("plot_descriptive.png", device = "png")
+print(p)
+```
+

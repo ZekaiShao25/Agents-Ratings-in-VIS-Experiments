@@ -1,0 +1,20 @@
+---
+title: "timeline"
+output: html_document
+---
+```{r, message=FALSE, warning=FALSE}
+# initializing
+#rm(list = ls())
+library(jsonlite)
+library(dplyr)
+library(ggplot2)
+library(boot)
+library(tidyr)
+set.seed(10387)
+data = fromJSON("timeline.json")
+```
+
+```{r}
+# this analysis is performed by human inspection
+```
+

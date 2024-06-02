@@ -1,0 +1,261 @@
+---
+title: "time_series"
+output: html_document
+---
+```{r, message=FALSE, warning=FALSE}
+# initializing
+#rm(list = ls())
+library(jsonlite)
+library(dplyr)
+library(ggplot2)
+library(boot)
+library(tidyr)
+set.seed(10387)
+data = fromJSON("uncertainty.json")
+```
+
+```{r}
+data.mean = data %>% filter(grepl("step2$", description))%>% filter(grepl("^mean", description))  %>% mutate(row = row_number()) %>% 
+  unnest_wider(score, names_sep = "_") %>% 
+  select(-row)
+colnames(data.mean)[7:11] = c("Baseline","Mean","CI","Density","Gradient")
+data.mean = data.mean[,c(7,11,10,8,9)]
+calculate_frequencies <- function(column) {
+  # Calculate the frequency of each value (1, 2, 3, 4, 5)
+  frequencies <- round(table(factor(column, levels = 1:5)) / nrow(data.mean),digits = 2)
+  # Calculate the frequency of values >= 3
+  frequencies_geq_3 <- signif(sum(column >= 3)/ nrow(data.mean) * 100, digits = 2)
+  # Return the frequencies along with the frequency of values >= 3
+  return(c(frequencies, `>=3(%)` = frequencies_geq_3))
+}
+# Apply this function to each column in the dataframe
+frequency_table <- apply(data.mean, 2, calculate_frequencies)
+print(t(frequency_table))
+frequency_table = t(frequency_table)
+cn = colnames(frequency_table)
+frequency_table = data.frame(frequency_table)
+colnames(frequency_table) = cn
+frequency_table$Category <- rownames(frequency_table)
+frequency_table$`>=3(%)` = frequency_table$`>=3(%)` /100
+frequency_table$Category = factor(frequency_table$Category, levels = c("CI","Mean","Density","Gradient","Baseline"))
+ggplot(frequency_table, aes(x = Category, y = `>=3(%)`)) +
+  geom_bar(stat = "identity",fill="#C6E9F6") +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent_format(), limits = c(0, 1)) +
+  labs(x = "", y = "") +
+  theme_minimal()
+#ggsave("temp.png",height = 10,width = 10, dpi = 300,device = "png")
+```
+
+
+```{r}
+data.trend = data %>% filter(grepl("step2$", description))%>% filter(grepl("^trend", description))  %>% mutate(row = row_number()) %>% 
+  unnest_wider(score, names_sep = "_") %>% 
+  select(-row)
+colnames(data.trend)[7:11] = c("Baseline","Mean","CI","Density","Gradient")
+data.trend = data.trend[,c(7,11,10,8,9)]
+calculate_frequencies <- function(column) {
+  frequencies <- round(table(factor(column, levels = 1:5)) / nrow(data.trend),digits = 2)
+  frequencies_geq_3 <- signif(sum(column >= 3)/ nrow(data.trend) * 100, digits = 2)
+  return(c(frequencies, `>=3(%)` = frequencies_geq_3))
+}
+frequency_table <- apply(data.trend, 2, calculate_frequencies)
+print(t(frequency_table))
+frequency_table = t(frequency_table)
+cn = colnames(frequency_table)
+frequency_table = data.frame(frequency_table)
+colnames(frequency_table) = cn
+frequency_table$Category <- rownames(frequency_table)
+frequency_table$`>=3(%)` = frequency_table$`>=3(%)` /100
+frequency_table$Category = factor(frequency_table$Category, levels = c("CI","Mean","Density","Gradient","Baseline"))
+ggplot(frequency_table, aes(x = Category, y = `>=3(%)`)) +
+  geom_bar(stat = "identity",fill="#C6E9F6") +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent_format(), limits = c(0, 1)) +
+  labs(x = "", y = "") +
+  theme_minimal()
+#ggsave("temp.png",height = 10,width = 10, dpi = 300,device = "png")
+```
+
+```{r}
+data.mean.woimage = data %>% filter(grepl("mean_without_image_rating", description))  %>% mutate(row = row_number()) %>% 
+  unnest_wider(score, names_sep = "_") %>% 
+  select(-row)
+colnames(data.mean.woimage)[7:11] = c("Baseline","Mean","CI","Density","Gradient")
+data.mean.woimage = data.mean.woimage[,c(7,11,10,8,9)]
+calculate_frequencies <- function(column) {
+  frequencies <- round(table(factor(column, levels = 1:5)) / nrow(data.mean.woimage),digits = 2)
+  frequencies_geq_3 <- signif(sum(column >= 3)/ nrow(data.mean.woimage) * 100, digits = 2)
+  return(c(frequencies, `>=3(%)` = frequencies_geq_3))
+}
+frequency_table <- apply(data.mean.woimage, 2, calculate_frequencies)
+print(t(frequency_table))
+frequency_table = t(frequency_table)
+cn = colnames(frequency_table)
+frequency_table = data.frame(frequency_table)
+colnames(frequency_table) = cn
+frequency_table$Category <- rownames(frequency_table)
+frequency_table$`>=3(%)` = frequency_table$`>=3(%)` /100
+frequency_table$Category = factor(frequency_table$Category, levels = c("CI","Mean","Density","Gradient","Baseline"))
+ggplot(frequency_table, aes(x = Category, y = `>=3(%)`)) +
+  geom_bar(stat = "identity",fill="#C6E9F6") +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent_format(), limits = c(0, 1)) +
+  labs(x = "", y = "") +
+  theme_minimal()
+#ggsave("temp.png",height = 10,width = 10, dpi = 300,device = "png")
+```
+
+
+```{r}
+data.trend.woimage = data %>% filter(grepl("trend_without_image_rating", description))  %>% mutate(row = row_number()) %>% 
+  unnest_wider(score, names_sep = "_") %>% 
+  select(-row)
+colnames(data.trend.woimage)[7:11] = c("Baseline","Mean","CI","Density","Gradient")
+data.trend.woimage = data.trend.woimage[,c(7,11,10,8,9)]
+calculate_frequencies <- function(column) {
+  frequencies <- round(table(factor(column, levels = 1:5)) / nrow(data.trend.woimage),digits = 2)
+  frequencies_geq_3 <- signif(sum(column >= 3)/ nrow(data.trend.woimage) * 100, digits = 2)
+  return(c(frequencies, `>=3(%)` = frequencies_geq_3))
+}
+frequency_table <- apply(data.trend.woimage, 2, calculate_frequencies)
+print(t(frequency_table))
+frequency_table = t(frequency_table)
+cn = colnames(frequency_table)
+frequency_table = data.frame(frequency_table)
+colnames(frequency_table) = cn
+frequency_table$Category <- rownames(frequency_table)
+frequency_table$`>=3(%)` = frequency_table$`>=3(%)` /100
+frequency_table$Category = factor(frequency_table$Category, levels = c("CI","Mean","Density","Gradient","Baseline"))
+ggplot(frequency_table, aes(x = Category, y = `>=3(%)`)) +
+  geom_bar(stat = "identity",fill="#C6E9F6") +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent_format(), limits = c(0, 1)) +
+  labs(x = "", y = "") +
+  theme_minimal()
+#ggsave("temp.png",height = 10,width = 10, dpi = 300,device = "png")
+```
+
+```{r}
+data.mean.woimage.wotask = fromJSON("uncertainty_mean_woI_T.json")
+colnames(data.mean.woimage.wotask) = c("Baseline","Mean","CI","Density","Gradient")
+data.mean.woimage.wotask = data.mean.woimage.wotask[,c(1,5,4,2,3)]
+calculate_frequencies <- function(column) {
+  frequencies <- round(table(factor(column, levels = 1:5)) / nrow(data.mean.woimage.wotask),digits = 2)
+  frequencies_geq_3 <- signif(sum(column >= 3)/ nrow(data.mean.woimage.wotask) * 100, digits = 2)
+  return(c(frequencies, `>=3(%)` = frequencies_geq_3))
+}
+frequency_table <- apply(data.mean.woimage.wotask, 2, calculate_frequencies)
+print(t(frequency_table))
+frequency_table = t(frequency_table)
+cn = colnames(frequency_table)
+frequency_table = data.frame(frequency_table)
+colnames(frequency_table) = cn
+frequency_table$Category <- rownames(frequency_table)
+frequency_table$`>=3(%)` = frequency_table$`>=3(%)` /100
+frequency_table$Category = factor(frequency_table$Category, levels = c("CI","Mean","Density","Gradient","Baseline"))
+ggplot(frequency_table, aes(x = Category, y = `>=3(%)`)) +
+  geom_bar(stat = "identity",fill="#C6E9F6") +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent_format(), limits = c(0, 1)) +
+  labs(x = "", y = "") +
+  theme_minimal()
+#ggsave("temp.png",height = 10,width = 10, dpi = 300,device = "png")
+```
+
+```{r}
+data.trend.woimage.wotask = fromJSON("uncertainty_trend_woI_T.json")
+colnames(data.trend.woimage.wotask) = c("Baseline","Mean","CI","Density","Gradient")
+data.trend.woimage.wotask = data.trend.woimage.wotask[,c(1,5,4,2,3)]
+calculate_frequencies <- function(column) {
+  frequencies <- round(table(factor(column, levels = 1:5)) / nrow(data.trend.woimage.wotask),digits = 2)
+  frequencies_geq_3 <- signif(sum(column >= 3)/ nrow(data.trend.woimage.wotask) * 100, digits = 2)
+  return(c(frequencies, `>=3(%)` = frequencies_geq_3))
+}
+frequency_table <- apply(data.trend.woimage.wotask, 2, calculate_frequencies)
+print(t(frequency_table))
+frequency_table = t(frequency_table)
+cn = colnames(frequency_table)
+frequency_table = data.frame(frequency_table)
+colnames(frequency_table) = cn
+frequency_table$Category <- rownames(frequency_table)
+frequency_table$`>=3(%)` = frequency_table$`>=3(%)` /100
+frequency_table$Category = factor(frequency_table$Category, levels = c("CI","Mean","Density","Gradient","Baseline"))
+ggplot(frequency_table, aes(x = Category, y = `>=3(%)`)) +
+  geom_bar(stat = "identity",fill="#C6E9F6") +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent_format(), limits = c(0, 1)) +
+  labs(x = "", y = "") +
+  theme_minimal()
+#ggsave("temp.png",height = 10,width = 10, dpi = 300,device = "png")
+```
+
+# Bayesian model from source paper
+```{r}
+if(FALSE){
+data.b = data %>% filter(grepl("step2$", description))%>% filter(grepl("^mean", description))  %>% mutate(session = row_number()) %>% 
+  unnest_wider(score, names_sep = "_")
+colnames(data.b)[7:11] = c("Baseline","Mean","CI","Density","Gradient")
+data.b$proportion <- stringr::str_extract(data.b$description, "\\d+")
+data.b.reshaped = data.b %>% reshape2::melt(measure.vars = c("Baseline", "Mean", "CI", "Density", "Gradient"), variable.name = "representation", value.name = "rating") %>% mutate(
+    session = factor(session),
+    proportion = factor(proportion),
+    representation = factor(representation),
+    rating = factor(rating,ordered = TRUE)
+  )
+}
+```
+
+```{r}
+if(FALSE){
+library(brms)
+priors.ord = c(
+  prior(normal(0, 5), class = "b"),
+  prior(student_t(3, 0, 5), class = "Intercept"),
+  prior(student_t(3, 0, 1), class = "sd"),
+  prior(lkj(2), class = "cor")
+)
+
+fit.ord.mean.2 = brm(
+  bf(rating ~ representation * proportion + (proportion|session)), 
+  family = cumulative(link = "logit"), 
+  data = data.b.reshaped, 
+  cores = 3, chains = 3, iter = 10000, control = list(adapt_delta = 0.9),
+)
+
+fit.ord.mean.2
+}
+```
+
+```{r}
+if(FALSE){
+library(tidybayes)
+library(modelr)
+df.ord_mean.draws = data.b.reshaped %>% 
+  ungroup() %>% 
+  data_grid(representation, proportion) %>%
+  add_epred_draws(fit.ord.mean.2, re_formula = NA)
+
+df.ord_mean.draws %>%
+  ggplot(aes(x = .epred, y = representation)) +
+  coord_cartesian(expand = FALSE) +
+  facet_grid(. ~ .category) +
+  stat_summary(fun = median, geom = "bar", fill = "#83beff", width = 1, color = "white") +
+  stat_pointinterval(.width = c(0.95)) +
+  scale_x_continuous(limits = c(0, 1), breaks = seq(0, 1, by = 0.2)) #+
+  #labs(title = "Figure 6 from paper")
+}
+```
+
+```{r}
+if(FALSE){
+df.ord_mean.draws %>%
+  group_by(representation, .category) %>%
+  summarise(.epred = mean(.epred), .groups = "drop") %>%
+  group_by(representation) %>%
+  mutate(.epred = cumsum(.epred)) %>%
+  filter(.category == 2) %>%
+  mutate(`Pr >= 3` = 1 - .epred)
+}
+```
+

@@ -1,0 +1,60 @@
+---
+title: "magnitude"
+output: html_document
+---
+```{r, message=FALSE, warning=FALSE}
+# initializing
+#rm(list = ls())
+library(jsonlite)
+library(dplyr)
+library(ggplot2)
+library(boot)
+library(tidyr)
+set.seed(10387)
+data = fromJSON("magnitude.json")
+data.e1 = filter(data, name=="magnitude_experience1")
+data.e2 = filter(data, name=="magnitude_experience2")
+```
+
+
+```{r}
+data.e1 <- data.e1 %>%
+  mutate(hi_g_lo = purrr::map(chance, ~ .x[1] > .x[2]))
+
+is_first_greater <- function(chance_list) {
+  sapply(chance_list, function(x) x[1] > x[2])
+}
+
+data.e1.by_item <- data.e1 %>%
+  group_by(description) %>%
+  summarise(mean_hi = mean(sapply(chance, function(x) x[1])),
+            mean_lo = mean(sapply(chance, function(x) x[2])),
+            proportion_first_greater = mean(is_first_greater(chance)))
+
+
+data.e1.by_item$mean_hi_g_lo = (data.e1.by_item$mean_hi - data.e1.by_item$mean_lo)>0
+data.e1.by_item$proportion_hi_g_lo = data.e1.by_item$proportion_first_greater>0.5
+
+data.e2 <- data.e2 %>%
+  mutate(hi_g_lo = purrr::map(chance, ~ .x[1] > .x[2]))
+
+data.e2.by_item <- data.e2 %>%
+  group_by(description) %>%
+  summarise(mean_hi = mean(sapply(chance, function(x) x[1])),
+            mean_lo = mean(sapply(chance, function(x) x[2])),
+            proportion_first_greater = mean(is_first_greater(chance)))
+
+
+data.e2.by_item$mean_hi_g_lo = (data.e2.by_item$mean_hi - data.e2.by_item$mean_lo)>0
+data.e2.by_item$proportion_hi_g_lo = data.e2.by_item$proportion_first_greater>0.5
+```
+
+```{r}
+mean(as.logical(data.e1$hi_g_lo))
+mean(as.logical(data.e2$hi_g_lo))
+mean(data.e1.by_item$mean_hi_g_lo)
+mean(data.e1.by_item$proportion_hi_g_lo)
+mean(data.e2.by_item$mean_hi_g_lo)
+mean(data.e2.by_item$proportion_hi_g_lo)
+```
+

@@ -1,0 +1,14 @@
+* Repeated measures ANOVA with two factors: decentering (2 levels) and noise (3 levels)
+
+GLM sd02_decentering0 sd04_decentering0 sd06_decentering0
+sd02_decentering99 sd04_decentering99 sd06_decentering99 
+  /WSFACTOR=decentering 2 Polynomial noise 3 Polynomial 
+  /METHOD=SSTYPE(3)
+  /EMMEANS=TABLES(decentering) COMPARE ADJ(BONFERRONI)
+  /EMMEANS=TABLES(noise) COMPARE ADJ(BONFERRONI)
+  /EMMEANS=TABLES(decentering*noise) 
+  /PRINT=DESCRIPTIVE ETASQ 
+  /CRITERIA=ALPHA(.05)
+  /WSDESIGN=decentering noise decentering*noise.
+
+EXECUTE.

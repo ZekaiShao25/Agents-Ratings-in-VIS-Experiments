@@ -1,0 +1,200 @@
+---
+title: "texture"
+output: html_document
+---
+```{r, message=FALSE, warning=FALSE}
+# initializing
+#rm(list = ls())
+library(jsonlite)
+library(dplyr)
+library(ggplot2)
+library(boot)
+library(tidyr)
+source("CI-Functions-Bonferroni.R")
+set.seed(10387)
+data = fromJSON("texture.json")
+```
+
+
+```{r}
+data.aes = data %>% filter(name=="texture_experiment_aesthetic")
+data.aes = data.aes[-(1:6),]
+expand_data <- function(df) {
+  expanded_rows <- lapply(1:nrow(df), function(i) {
+    desc <- df$description[i]
+    scores <- df$score[[i]]
+    new_desc <- paste0(desc, 1:nrow(scores))
+    score_df <- as.data.frame(scores)
+    score_df$description <- new_desc
+    return(score_df)
+  })
+  do.call(rbind, expanded_rows)
+}
+
+data.aes.expanded <- expand_data(data.aes)
+data.aes.expanded <- data.aes.expanded %>%
+  mutate(BeauVis = rowMeans(select(., 1:5)),
+         BeauVis_var = apply(select(., 1:5), 1, var))
+data.aes.expanded <- data.aes.expanded[,c(8,9,10,6,7)]
+
+result <- data.aes.expanded %>%
+  group_by(description) %>%
+  summarise(BeauVis = mean(BeauVis, na.rm = TRUE),
+            BeauVis_var_max = max(BeauVis_var, na.rm = TRUE),
+            vibratory = mean(vibratory_effect, na.rm = TRUE), 
+            rank_1 = sum(rank == 1, na.rm = TRUE))
+  result[,2:4] = round(result[,2:4],digits = 2)
+```
+
+```{r, message=FALSE, warning=FALSE,results='asis'}
+library(knitr)
+library(kableExtra)
+for (catagory in c("^BG","^BI","^PG","^PI","^MG","^MI")){
+result_transposed <- t(result[grep(catagory, result$description),])
+colnames(result_transposed) <- result_transposed[1, ]
+result_transposed <- result_transposed[-1, ]
+table = kable(result_transposed, "html") %>%
+  kable_styling(full_width = F, position = "left", bootstrap_options = "striped", 
+                font_size = 12) %>%
+  column_spec(1, bold = TRUE)
+print(table)
+}
+```
+
+```{r}
+data.readability = data %>% filter(name=="texture_experiment_readable")
+process_scores <- function(score_table) {
+  score_table$fill <- c("uni", "geo", "icon")
+  score_table$BeauVis <- rowMeans(score_table[1:5])
+  new_table <- score_table[, c("fill", "BeauVis", "readability")]
+  
+  uni_row <- new_table[new_table$fill == "uni", ]
+  geo_row <- new_table[new_table$fill == "geo", ]
+  icon_row <- new_table[new_table$fill == "icon", ]
+  
+  diff_uni_icon <- c("uni-icon", uni_row$BeauVis - icon_row$BeauVis, uni_row$readability - icon_row$readability)
+  diff_geo_uni <- c("geo-uni", geo_row$BeauVis - uni_row$BeauVis, geo_row$readability - uni_row$readability)
+  diff_geo_icon <- c("geo-icon", geo_row$BeauVis - icon_row$BeauVis, geo_row$readability - icon_row$readability)
+  
+  new_table <- rbind(new_table, as.data.frame(list(fill=diff_uni_icon[1], BeauVis=as.numeric(diff_uni_icon[2]), readability=as.numeric(diff_uni_icon[3]))))
+  new_table <- rbind(new_table, as.data.frame(list(fill=diff_geo_uni[1], BeauVis=as.numeric(diff_geo_uni[2]), readability=as.numeric(diff_geo_uni[3]))))
+  new_table <- rbind(new_table, as.data.frame(list(fill=diff_geo_icon[1], BeauVis=as.numeric(diff_geo_icon[2]), readability=as.numeric(diff_geo_icon[3]))))
+  
+  return(new_table)
+}
+data.readability$result <- lapply(data.readability$score, process_scores)
+data.readability =  mutate(data.readability,description = case_when(
+    grepl("pie$", description) ~ "pie",
+    grepl("bar$", description) ~ "bar",
+  ))
+data.plot = data.readability[,c(2,7)] %>% unnest(result)
+colnames(data.plot)[1] = "chart"
+stat.plot.beauvis = data.frame(chart=character(),fill=character(),mean=numeric(),ci_lower=numeric(),ci_upper=numeric())
+stat.plot.beauvis.pairwise = data.frame(chart=character(),fill=character(),mean=numeric(),ci_lower=numeric(),ci_upper=numeric(),ci_lower_corr=numeric(),ci_upper_corr=numeric())
+for(chart_ in unique(data.plot$chart)){
+  for(fill_ in c("uni","geo","icon")){
+  group.data = data.plot %>% filter(chart==chart_) %>% filter(fill==fill_)
+  boot.result = bootstrapMeanCI(group.data$BeauVis)
+  new_row = list(chart=chart_, fill=fill_, mean=boot.result[1], ci_lower=boot.result[2], ci_upper=boot.result[3])
+  stat.plot.beauvis <- bind_rows(stat.plot.beauvis, new_row)
+  }
+  for(fill_ in c("uni-icon","geo-uni","geo-icon")){
+  group.data = data.plot %>% filter(chart==chart_) %>% filter(fill==fill_)
+  boot.result = bootstrapMeanCI_corr(group.data$BeauVis,3)
+  new_row = list(chart=chart_, fill=fill_, mean=boot.result[1], ci_lower=boot.result[2], ci_upper=boot.result[3],ci_lower_corr=boot.result[5],ci_upper_corr=boot.result[6])
+  stat.plot.beauvis.pairwise <- bind_rows(stat.plot.beauvis.pairwise, new_row)
+  }
+}
+
+stat.plot.readability = data.frame(chart=character(),fill=character(),mean=numeric(),ci_lower=numeric(),ci_upper=numeric())
+stat.plot.readability.pairwise = data.frame(chart=character(),fill=character(),mean=numeric(),ci_lower=numeric(),ci_upper=numeric(),ci_lower_corr=numeric(),ci_upper_corr=numeric())
+for(chart_ in unique(data.plot$chart)){
+  for(fill_ in c("uni","geo","icon")){
+  group.data = data.plot %>% filter(chart==chart_) %>% filter(fill==fill_)
+  boot.result = bootstrapMeanCI(group.data$readability)
+  new_row = list(chart=chart_, fill=fill_, mean=boot.result[1], ci_lower=boot.result[2], ci_upper=boot.result[3])
+  stat.plot.readability <- bind_rows(stat.plot.readability, new_row)
+  }
+  for(fill_ in c("uni-icon","geo-uni","geo-icon")){
+  group.data = data.plot %>% filter(chart==chart_) %>% filter(fill==fill_)
+  boot.result = bootstrapMeanCI_corr(group.data$readability,3)
+  new_row = list(chart=chart_, fill=fill_, mean=boot.result[1], ci_lower=boot.result[2], ci_upper=boot.result[3],ci_lower_corr=boot.result[5],ci_upper_corr=boot.result[6])
+  stat.plot.readability.pairwise <- bind_rows(stat.plot.readability.pairwise, new_row)
+  }
+}
+```
+
+
+# bar-beauvis
+```{r,results='asis'}
+barData = (stat.plot.beauvis %>% filter(chart=="bar"))[2:5]
+bardatatoprint <- data.frame(factor(barData$fill,levels = c("geo","icon","uni")),barData$mean, barData$ci_lower, barData$ci_upper)
+colnames(bardatatoprint) <- c("technique", "mean_time", "lowerBound_CI", "upperBound_CI ")
+g = barChart(bardatatoprint,bardatatoprint$technique ,nbTechs = 3, ymin = 1, ymax = 7, gray_line_interval = 1, "", "","")
+#ggsave("test.png",g,width = 10, height = 1, dpi = 300,device = "png")
+```
+# pie-beauvis
+```{r,results='asis'}
+barData = (stat.plot.beauvis %>% filter(chart=="pie"))[2:5]
+bardatatoprint <- data.frame(factor(barData$fill,levels = c("geo","icon","uni")),barData$mean, barData$ci_lower, barData$ci_upper)
+colnames(bardatatoprint) <- c("technique", "mean_time", "lowerBound_CI", "upperBound_CI ")
+g = barChart(bardatatoprint,bardatatoprint$technique ,nbTechs = 3, ymin = 1, ymax = 7, gray_line_interval = 1, "", "","")
+#ggsave("test1.png",g,width = 10, height = 1, dpi = 300,device = "png")
+```
+
+
+
+# bar-beauvis-pairwise
+```{r}
+barData = (stat.plot.beauvis.pairwise %>% filter(chart=="bar"))[2:7]
+datatoprintbar <- data.frame(factor(barData$fill,c("geo-icon","geo-uni","uni-icon")),barData$mean, barData$ci_lower, barData$ci_upper,barData$ci_lower_corr,barData$ci_upper_corr)
+colnames(datatoprintbar) <- c("technique", "mean_time", "lowerBound_CI", "upperBound_CI",  "lowerBound_CI_corr", "upperBound_CI_corr")
+g=barChart_corr(datatoprintbar,datatoprintbar$technique ,nbTechs = 3, ymin = -3, ymax = 3,  gray_line_interval = 1,"", "","")
+#ggsave("test.png",g,width = 10, height = 1, dpi = 300,device = "png")
+```
+
+# pie-beauvis-pairwise
+```{r}
+barData = (stat.plot.beauvis.pairwise %>% filter(chart=="pie"))[2:7]
+datatoprintbar <- data.frame(factor(barData$fill,c("geo-icon","geo-uni","uni-icon")),barData$mean, barData$ci_lower, barData$ci_upper,barData$ci_lower_corr,barData$ci_upper_corr)
+colnames(datatoprintbar) <- c("technique", "mean_time", "lowerBound_CI", "upperBound_CI",  "lowerBound_CI_corr", "upperBound_CI_corr")
+g=barChart_corr(datatoprintbar,datatoprintbar$technique ,nbTechs = 3, ymin = -3, ymax = 3,  gray_line_interval = 1,"", "","")
+#ggsave("test.png",g,width = 10, height = 1, dpi = 300,device = "png")
+```
+# bar-readability
+```{r,results='asis'}
+barData = (stat.plot.readability %>% filter(chart=="bar"))[2:5]
+bardatatoprint <- data.frame(factor(barData$fill,levels = c("geo","icon","uni")),barData$mean, barData$ci_lower, barData$ci_upper)
+colnames(bardatatoprint) <- c("technique", "mean_time", "lowerBound_CI", "upperBound_CI ")
+g=barChart(bardatatoprint,bardatatoprint$technique ,nbTechs = 3, ymin = 1, ymax = 7, gray_line_interval = 1, "", "","")
+#ggsave("test.png",g,width = 10, height = 1, dpi = 300,device = "png")
+```
+
+# pie-readability
+```{r,results='asis'}
+barData = (stat.plot.readability %>% filter(chart=="pie"))[2:5]
+bardatatoprint <- data.frame(factor(barData$fill,levels = c("geo","icon","uni")),barData$mean, barData$ci_lower, barData$ci_upper)
+colnames(bardatatoprint) <- c("technique", "mean_time", "lowerBound_CI", "upperBound_CI ")
+g=barChart(bardatatoprint,bardatatoprint$technique ,nbTechs = 3, ymin = 1, ymax = 7, gray_line_interval = 1, "", "","")
+#ggsave("test.png",g,width = 10, height = 1, dpi = 300,device = "png")
+```
+
+
+
+# bar-readability-pairwise
+```{r}
+barData = (stat.plot.readability.pairwise %>% filter(chart=="bar"))[2:7]
+datatoprintbar <- data.frame(factor(barData$fill,c("geo-icon","geo-uni","uni-icon")),barData$mean, barData$ci_lower, barData$ci_upper,barData$ci_lower_corr,barData$ci_upper_corr)
+colnames(datatoprintbar) <- c("technique", "mean_time", "lowerBound_CI", "upperBound_CI",  "lowerBound_CI_corr", "upperBound_CI_corr")
+g=barChart_corr(datatoprintbar,datatoprintbar$technique ,nbTechs = 3, ymin = -3, ymax = 3,  gray_line_interval = 1,"", "","")
+#ggsave("test.png",g,width = 10, height = 1, dpi = 300,device = "png")
+```
+
+# pie-readability-pairwise
+```{r}
+barData = (stat.plot.readability.pairwise %>% filter(chart=="pie"))[2:7]
+datatoprintbar <- data.frame(factor(barData$fill,c("geo-icon","geo-uni","uni-icon")),barData$mean, barData$ci_lower, barData$ci_upper,barData$ci_lower_corr,barData$ci_upper_corr)
+colnames(datatoprintbar) <- c("technique", "mean_time", "lowerBound_CI", "upperBound_CI",  "lowerBound_CI_corr", "upperBound_CI_corr")
+g=barChart_corr(datatoprintbar,datatoprintbar$technique ,nbTechs = 3, ymin = -3, ymax = 3,  gray_line_interval = 1,"", "","")
+#ggsave("test.png",g,width = 10, height = 1, dpi = 300,device = "png")
+```

@@ -1,0 +1,1826 @@
+[
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'At what time was the Group Meeting on Wednesday?', and you need to select one from 6 options: ['8 AM', '12 PM', '2 PM', '4 PM', '7 PM', '8 PM'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'No preference', 'Horizontal', 'Vertical line', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "The Group Meeting on Wednesday was at 2 PM.\n\nThe easiest timeline shape to read for the historical dataset was the Horizontal line.\n\n```json\n[{\"answer\": \"2 PM\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "2 PM",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "At what time was the Group Meeting on Wednesday?",
+            "options": [
+                "8 AM",
+                "12 PM",
+                "2 PM",
+                "4 PM",
+                "7 PM",
+                "8 PM"
+            ],
+            "answer": "2 PM",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In what year was writing invented?', and you need to select one from 6 options: ['921', '924', '925', '927', '929', '933'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'No preference', 'Circle', 'Vertical line', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "Answer: 929\nEasiest read: Horizontal\n\n```json\n[{\"answer\": \"929\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "929",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In what year was writing invented?",
+            "options": [
+                "921",
+                "924",
+                "925",
+                "927",
+                "929",
+                "933"
+            ],
+            "answer": "929",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In which season do you plant Puffapod?', and you need to select one from 6 options: ['Spring', 'Summer', 'Autumn', 'Winter', 'Anytime', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'No preference', 'Circle', 'Horizontal', 'Vertical line'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "Answer: Autumn\n\nEasiest to read: Horizontal\n\n```json\n[{\"answer\": \"Autumn\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Autumn",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In which season do you plant Puffapod?",
+            "options": [
+                "Spring",
+                "Summer",
+                "Autumn",
+                "Winter",
+                "Anytime",
+                "Not sure"
+            ],
+            "answer": "Autumn",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'At what time was the Group Meeting on Wednesday?', and you need to select one from 6 options: ['8 AM', '12 PM', '2 PM', '4 PM', '7 PM', '8 PM'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['No preference', 'Vertical line', 'Circle', 'Spiral', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "The Group Meeting on Wednesday was at 2 PM.\n\nThe easiest timeline shape to read for the historical dataset was the Horizontal line.\n\n```json\n[{\"answer\": \"2 PM\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "2 PM",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "At what time was the Group Meeting on Wednesday?",
+            "options": [
+                "8 AM",
+                "12 PM",
+                "2 PM",
+                "4 PM",
+                "7 PM",
+                "8 PM"
+            ],
+            "answer": "2 PM",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'At what time was the Group Meeting on Wednesday?', and you need to select one from 6 options: ['8 AM', '12 PM', '2 PM', '4 PM', '7 PM', '8 PM'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['No preference', 'Vertical line', 'Circle', 'Spiral', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "The Group Meeting on Wednesday was at 2 PM.\n\nThe easiest timeline shape to read for the historical dataset was the Horizontal line.\n\n```json\n[{\"answer\": \"2 PM\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "2 PM",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "At what time was the Group Meeting on Wednesday?",
+            "options": [
+                "8 AM",
+                "12 PM",
+                "2 PM",
+                "4 PM",
+                "7 PM",
+                "8 PM"
+            ],
+            "answer": "2 PM",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'At what time was the Group Meeting on Wednesday?', and you need to select one from 6 options: ['8 AM', '12 PM', '2 PM', '4 PM', '7 PM', '8 PM'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['No preference', 'Vertical line', 'Circle', 'Spiral', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "The Group Meeting on Wednesday was at 2 PM.\n\nThe easiest timeline shape to read for the historical dataset was the horizontal line.\n\n```json\n[{\"answer\": \"2 PM\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "2 PM",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "At what time was the Group Meeting on Wednesday?",
+            "options": [
+                "8 AM",
+                "12 PM",
+                "2 PM",
+                "4 PM",
+                "7 PM",
+                "8 PM"
+            ],
+            "answer": "2 PM",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'At what time was the Group Meeting on Wednesday?', and you need to select one from 6 options: ['8 AM', '12 PM', '2 PM', '4 PM', '7 PM', '8 PM'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['No preference', 'Vertical line', 'Circle', 'Spiral', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "The Group Meeting on Wednesday was at 2 PM.\n\nThe easiest timeline shape to read for the historical dataset was the Horizontal line.\n\n```json\n[{\"answer\": \"2 PM\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "2 PM",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "At what time was the Group Meeting on Wednesday?",
+            "options": [
+                "8 AM",
+                "12 PM",
+                "2 PM",
+                "4 PM",
+                "7 PM",
+                "8 PM"
+            ],
+            "answer": "2 PM",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'At what time was the Group Meeting on Wednesday?', and you need to select one from 6 options: ['8 AM', '12 PM', '2 PM', '4 PM', '7 PM', '8 PM'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['No preference', 'Vertical line', 'Circle', 'Spiral', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "The Group Meeting on Wednesday was at 2 PM.\n\nThe easiest timeline shape to read for the historical dataset was the horizontal line.\n\n```json\n[{\"answer\": \"2 PM\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "2 PM",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "At what time was the Group Meeting on Wednesday?",
+            "options": [
+                "8 AM",
+                "12 PM",
+                "2 PM",
+                "4 PM",
+                "7 PM",
+                "8 PM"
+            ],
+            "answer": "2 PM",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In what year was writing invented?', and you need to select one from 6 options: ['921', '924', '925', '927', '929', '933'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Circle', 'Horizontal', 'No preference'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "The year writing was invented, according to the timelines provided, is '929'.\n\nThe timeline shape that was the easiest to read for the historical dataset is 'Horizontal'.\n\n```json\n[{\"answer\": \"929\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "929",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In what year was writing invented?",
+            "options": [
+                "921",
+                "924",
+                "925",
+                "927",
+                "929",
+                "933"
+            ],
+            "answer": "929",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In what year was writing invented?', and you need to select one from 6 options: ['921', '924', '925', '927', '929', '933'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Circle', 'Horizontal', 'No preference'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "In what year was writing invented? The answer is '929'.\n\nWhich timeline shape was the easiest to read for the historical dataset? The answer is 'Horizontal'.\n\n```json\n[{\"answer\": \"929\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "929",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In what year was writing invented?",
+            "options": [
+                "921",
+                "924",
+                "925",
+                "927",
+                "929",
+                "933"
+            ],
+            "answer": "929",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In what year was writing invented?', and you need to select one from 6 options: ['921', '924', '925', '927', '929', '933'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Circle', 'Horizontal', 'No preference'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "In what year was writing invented? The answer is '929'.\n\nWhich timeline shape was the easiest to read for the historical dataset? The answer is 'Horizontal'.\n\n```json\n[{\"answer\": \"929\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "929",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In what year was writing invented?",
+            "options": [
+                "921",
+                "924",
+                "925",
+                "927",
+                "929",
+                "933"
+            ],
+            "answer": "929",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In what year was writing invented?', and you need to select one from 6 options: ['921', '924', '925', '927', '929', '933'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Circle', 'Horizontal', 'No preference'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "In the year 929, writing was invented according to the dataset provided in the image.\n\nAmong the timeline shapes presented, the 'Horizontal line' timeline seems to be the easiest to read for the historical dataset.\n\nHere is the scoring result in JSON format:\n\n```json\n[{\"answer\": \"929\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "929",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In what year was writing invented?",
+            "options": [
+                "921",
+                "924",
+                "925",
+                "927",
+                "929",
+                "933"
+            ],
+            "answer": "929",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In what year was writing invented?', and you need to select one from 6 options: ['921', '924', '925', '927', '929', '933'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Circle', 'Horizontal', 'No preference'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "In what year was writing invented? The answer is '929'.\n\nWhich timeline shape was the easiest to read for the historical dataset? The answer is 'Horizontal'.\n\n```json\n[{\"answer\": \"929\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "929",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In what year was writing invented?",
+            "options": [
+                "921",
+                "924",
+                "925",
+                "927",
+                "929",
+                "933"
+            ],
+            "answer": "929",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In which season do you plant Puffapod?', and you need to select one from 6 options: ['Spring', 'Summer', 'Autumn', 'Winter', 'Anytime', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Circle', 'Horizontal', 'No preference', 'Vertical line'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "The answer to the question \"In which season do you plant Puffapod?\" based on the timelines provided is \"Autumn.\"\n\nRegarding the question \"Which timeline shape was the easiest to read for the historical dataset?\" my selection is \"Horizontal.\"\n\nHere is the scoring result in JSON format:\n\n```json\n[{\"answer\": \"Autumn\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Autumn",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In which season do you plant Puffapod?",
+            "options": [
+                "Spring",
+                "Summer",
+                "Autumn",
+                "Winter",
+                "Anytime",
+                "Not sure"
+            ],
+            "answer": "Autumn",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In which season do you plant Puffapod?', and you need to select one from 6 options: ['Spring', 'Summer', 'Autumn', 'Winter', 'Anytime', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Circle', 'Horizontal', 'No preference', 'Vertical line'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In which season do you plant Puffapod? Autumn\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"Autumn\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Autumn",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In which season do you plant Puffapod?",
+            "options": [
+                "Spring",
+                "Summer",
+                "Autumn",
+                "Winter",
+                "Anytime",
+                "Not sure"
+            ],
+            "answer": "Autumn",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In which season do you plant Puffapod?', and you need to select one from 6 options: ['Spring', 'Summer', 'Autumn', 'Winter', 'Anytime', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Circle', 'Horizontal', 'No preference', 'Vertical line'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In which season do you plant Puffapod? Autumn\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"Autumn\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Autumn",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In which season do you plant Puffapod?",
+            "options": [
+                "Spring",
+                "Summer",
+                "Autumn",
+                "Winter",
+                "Anytime",
+                "Not sure"
+            ],
+            "answer": "Autumn",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In which season do you plant Puffapod?', and you need to select one from 6 options: ['Spring', 'Summer', 'Autumn', 'Winter', 'Anytime', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Circle', 'Horizontal', 'No preference', 'Vertical line'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In which season do you plant Puffapod? Autumn\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"Autumn\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Autumn",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In which season do you plant Puffapod?",
+            "options": [
+                "Spring",
+                "Summer",
+                "Autumn",
+                "Winter",
+                "Anytime",
+                "Not sure"
+            ],
+            "answer": "Autumn",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHEN",
+        "prompt": "You are an average user. There are several different timelines represented on different shapes with same dataset (Horizontal, Vertical line, Circle, Spiral). The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In which season do you plant Puffapod?', and you need to select one from 6 options: ['Spring', 'Summer', 'Autumn', 'Winter', 'Anytime', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Circle', 'Horizontal', 'No preference', 'Vertical line'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In which season do you plant Puffapod? Autumn\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"Autumn\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Autumn",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In which season do you plant Puffapod?",
+            "options": [
+                "Spring",
+                "Summer",
+                "Autumn",
+                "Winter",
+                "Anytime",
+                "Not sure"
+            ],
+            "answer": "Autumn",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "WHEN"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happened on Tuesday at 12 PM?', and you need to select one from 6 options: ['Gym', 'Social hour', 'Wake up', 'Reading Group', 'Lunch', 'Group Meeting'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'No preference', 'Spiral', 'Circle', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "What happened on Tuesday at 12 PM? Lunch\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"Lunch\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Lunch",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "What happened on Tuesday at 12 PM?",
+            "options": [
+                "Gym",
+                "Social hour",
+                "Wake up",
+                "Reading Group",
+                "Lunch",
+                "Group Meeting"
+            ],
+            "answer": "Lunch",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happened on Tuesday at 12 PM?', and you need to select one from 6 options: ['Gym', 'Social hour', 'Wake up', 'Reading Group', 'Lunch', 'Group Meeting'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'No preference', 'Spiral', 'Circle', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "What happened on Tuesday at 12 PM? Lunch\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"Lunch\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Lunch",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "What happened on Tuesday at 12 PM?",
+            "options": [
+                "Gym",
+                "Social hour",
+                "Wake up",
+                "Reading Group",
+                "Lunch",
+                "Group Meeting"
+            ],
+            "answer": "Lunch",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happened on Tuesday at 12 PM?', and you need to select one from 6 options: ['Gym', 'Social hour', 'Wake up', 'Reading Group', 'Lunch', 'Group Meeting'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'No preference', 'Spiral', 'Circle', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "What happened on Tuesday at 12 PM? Lunch\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"Lunch\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Lunch",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "What happened on Tuesday at 12 PM?",
+            "options": [
+                "Gym",
+                "Social hour",
+                "Wake up",
+                "Reading Group",
+                "Lunch",
+                "Group Meeting"
+            ],
+            "answer": "Lunch",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happened on Tuesday at 12 PM?', and you need to select one from 6 options: ['Gym', 'Social hour', 'Wake up', 'Reading Group', 'Lunch', 'Group Meeting'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'No preference', 'Spiral', 'Circle', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "What happened on Tuesday at 12 PM? Lunch\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"Lunch\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Lunch",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "What happened on Tuesday at 12 PM?",
+            "options": [
+                "Gym",
+                "Social hour",
+                "Wake up",
+                "Reading Group",
+                "Lunch",
+                "Group Meeting"
+            ],
+            "answer": "Lunch",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happened on Tuesday at 12 PM?', and you need to select one from 6 options: ['Gym', 'Social hour', 'Wake up', 'Reading Group', 'Lunch', 'Group Meeting'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'No preference', 'Spiral', 'Circle', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "What happened on Tuesday at 12 PM? Lunch\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"Lunch\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Lunch",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "What happened on Tuesday at 12 PM?",
+            "options": [
+                "Gym",
+                "Social hour",
+                "Wake up",
+                "Reading Group",
+                "Lunch",
+                "Group Meeting"
+            ],
+            "answer": "Lunch",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happened in 935?', and you need to select one from 6 options: ['City is built', 'Temples built', 'Economy booms', 'Bartering ends', 'Trading flourishes', 'Farming starts'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Circle', 'No preference', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "What happened in 935? City is built\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"City is built\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "City is built",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "What happened in 935?",
+            "options": [
+                "City is built",
+                "Temples built",
+                "Economy booms",
+                "Bartering ends",
+                "Trading flourishes",
+                "Farming starts"
+            ],
+            "answer": "City is built",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happened in 935?', and you need to select one from 6 options: ['City is built', 'Temples built', 'Economy booms', 'Bartering ends', 'Trading flourishes', 'Farming starts'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Circle', 'No preference', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "What happened in 935? City is built\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"City is built\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "City is built",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "What happened in 935?",
+            "options": [
+                "City is built",
+                "Temples built",
+                "Economy booms",
+                "Bartering ends",
+                "Trading flourishes",
+                "Farming starts"
+            ],
+            "answer": "City is built",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happened in 935?', and you need to select one from 6 options: ['City is built', 'Temples built', 'Economy booms', 'Bartering ends', 'Trading flourishes', 'Farming starts'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Circle', 'No preference', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "What happened in 935? City is built\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"City is built\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "City is built",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "What happened in 935?",
+            "options": [
+                "City is built",
+                "Temples built",
+                "Economy booms",
+                "Bartering ends",
+                "Trading flourishes",
+                "Farming starts"
+            ],
+            "answer": "City is built",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happened in 935?', and you need to select one from 6 options: ['City is built', 'Temples built', 'Economy booms', 'Bartering ends', 'Trading flourishes', 'Farming starts'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Circle', 'No preference', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "What happened in 935? City is built\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"City is built\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "City is built",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "What happened in 935?",
+            "options": [
+                "City is built",
+                "Temples built",
+                "Economy booms",
+                "Bartering ends",
+                "Trading flourishes",
+                "Farming starts"
+            ],
+            "answer": "City is built",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happened in 935?', and you need to select one from 6 options: ['City is built', 'Temples built', 'Economy booms', 'Bartering ends', 'Trading flourishes', 'Farming starts'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Circle', 'No preference', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "What happened in 935? City is built\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"City is built\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "City is built",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "What happened in 935?",
+            "options": [
+                "City is built",
+                "Temples built",
+                "Economy booms",
+                "Bartering ends",
+                "Trading flourishes",
+                "Farming starts"
+            ],
+            "answer": "City is built",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happens in Autumn 2019?', and you need to select one from 6 options: ['Planting Wolfsbane', 'Planting Dittany', 'Planting Puffapod', 'Planting Gurdyroot', 'Planting nothing', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'Spiral', 'No preference', 'Horizontal', 'Vertical line'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "What happens in Autumn 2019? Planting Puffapod\n\nWhich timeline shape was the easiest to read for the historical dataset? Horizontal\n\n```json\n[{\"answer\": \"Planting Puffapod\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Planting Puffapod",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "What happens in Autumn 2019?",
+            "options": [
+                "Planting Wolfsbane",
+                "Planting Dittany",
+                "Planting Puffapod",
+                "Planting Gurdyroot",
+                "Planting nothing",
+                "Not sure"
+            ],
+            "answer": "Planting Puffapod",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happens in Autumn 2019?', and you need to select one from 6 options: ['Planting Wolfsbane', 'Planting Dittany', 'Planting Puffapod', 'Planting Gurdyroot', 'Planting nothing', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'Spiral', 'No preference', 'Horizontal', 'Vertical line'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In Autumn 2019, the event 'Planting Puffapod' took place.\n\nThe timeline shape that was the easiest to read for the historical dataset is the 'Horizontal line'.\n\n```json\n[{\"answer\": \"Planting Puffapod\", \"easiest_read\": \"Horizontal line\"}]\n```",
+        "score": [
+            {
+                "answer": "Planting Puffapod",
+                "easiest_read": "Horizontal line"
+            }
+        ],
+        "question": {
+            "question": "What happens in Autumn 2019?",
+            "options": [
+                "Planting Wolfsbane",
+                "Planting Dittany",
+                "Planting Puffapod",
+                "Planting Gurdyroot",
+                "Planting nothing",
+                "Not sure"
+            ],
+            "answer": "Planting Puffapod",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happens in Autumn 2019?', and you need to select one from 6 options: ['Planting Wolfsbane', 'Planting Dittany', 'Planting Puffapod', 'Planting Gurdyroot', 'Planting nothing', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'Spiral', 'No preference', 'Horizontal', 'Vertical line'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In Autumn 2019, the event is \"Planting Puffapod.\"\n\nThe timeline shape that was the easiest to read for the historical dataset is \"Horizontal line.\"\n\n```json\n[{\"answer\": \"Planting Puffapod\", \"easiest_read\": \"Horizontal line\"}]\n```",
+        "score": [
+            {
+                "answer": "Planting Puffapod",
+                "easiest_read": "Horizontal line"
+            }
+        ],
+        "question": {
+            "question": "What happens in Autumn 2019?",
+            "options": [
+                "Planting Wolfsbane",
+                "Planting Dittany",
+                "Planting Puffapod",
+                "Planting Gurdyroot",
+                "Planting nothing",
+                "Not sure"
+            ],
+            "answer": "Planting Puffapod",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happens in Autumn 2019?', and you need to select one from 6 options: ['Planting Wolfsbane', 'Planting Dittany', 'Planting Puffapod', 'Planting Gurdyroot', 'Planting nothing', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'Spiral', 'No preference', 'Horizontal', 'Vertical line'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In Autumn 2019, the event 'Planting Puffapod' took place.\n\nThe timeline shape that was the easiest to read for the historical dataset is the 'Horizontal line'.\n\n```json\n[{\"answer\": \"Planting Puffapod\", \"easiest_read\": \"Horizontal line\"}]\n```",
+        "score": [
+            {
+                "answer": "Planting Puffapod",
+                "easiest_read": "Horizontal line"
+            }
+        ],
+        "question": {
+            "question": "What happens in Autumn 2019?",
+            "options": [
+                "Planting Wolfsbane",
+                "Planting Dittany",
+                "Planting Puffapod",
+                "Planting Gurdyroot",
+                "Planting nothing",
+                "Not sure"
+            ],
+            "answer": "Planting Puffapod",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "WHAT",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'What happens in Autumn 2019?', and you need to select one from 6 options: ['Planting Wolfsbane', 'Planting Dittany', 'Planting Puffapod', 'Planting Gurdyroot', 'Planting nothing', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'Spiral', 'No preference', 'Horizontal', 'Vertical line'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In Autumn 2019, the event that took place was \"Planting Puffapod.\"\n\nThe timeline shape that was the easiest to read for the historical dataset is \"Horizontal.\"\n\n```json\n[{\"answer\": \"Planting Puffapod\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Planting Puffapod",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "What happens in Autumn 2019?",
+            "options": [
+                "Planting Wolfsbane",
+                "Planting Dittany",
+                "Planting Puffapod",
+                "Planting Gurdyroot",
+                "Planting nothing",
+                "Not sure"
+            ],
+            "answer": "Planting Puffapod",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "WHAT"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Movie Night happened on Tuesday 6 PM. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['No preference', 'Vertical line', 'Horizontal', 'Circle', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "Movie Night happened on Tuesday at 6 PM, and it can be found on the vertical line timeline.\n\nRegarding the easiest timeline shape to read for the historical dataset, it is subjective and depends on personal preference. However, for the sake of this task, I will choose \"Horizontal\" as the easiest to read.\n\n```json\n[{\"answer\": \"vertical line\", \"easiest_read\": \"horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "vertical line",
+                "easiest_read": "horizontal"
+            }
+        ],
+        "question": {
+            "question": "Movie Night happened on Tuesday 6 PM. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Movie Night",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In the year 912, there was a major epidemic. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Horizontal', 'Circle', 'No preference'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "The major epidemic in the year 912 can be found on the spiral timeline.\n\nThe easiest timeline shape to read for the historical dataset is the horizontal line.\n\n```json\n[{\"answer\": \"spiral\", \"easiest_read\": \"horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "spiral",
+                "easiest_read": "horizontal"
+            }
+        ],
+        "question": {
+            "question": "In the year 912, there was a major epidemic. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Major epidemic",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Wolfsbane is planted in Winter 2018. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'Horizontal', 'No preference', 'Vertical line', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "Wolfsbane is planted in Winter 2018. On the timeline, it can be found on the vertical line timeline in the top right section, the circle timeline in the bottom right section, and the horizontal line timeline in the bottom left section.\n\nRegarding which timeline shape was the easiest to read for the historical dataset, this is subjective and depends on personal preference. However, for the sake of providing an answer, I will choose the \"Horizontal\" timeline as it presents the information in a linear and familiar left-to-right reading format, which many people might find intuitive.\n\n```json\n[{\"answer\": \"Wolfsbane is planted in Winter 2018\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Wolfsbane is planted in Winter 2018",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Wolfsbane is planted in Winter 2018. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Planting Wolfsbane",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Movie Night happened on Tuesday 6 PM. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'No preference', 'Vertical line', 'Horizontal', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "Movie Night happened on Tuesday at 6 PM. It is shown on the vertical line timeline.\n\nThe easiest timeline shape to read for the historical dataset is subjective, but for this example, I would select \"Vertical line\" as it presents the events in a clear, linear fashion that is easy to follow from top to bottom.\n\n```json\n[{\"answer\": \"Vertical line timeline\", \"easiest_read\": \"Vertical line\"}]\n```",
+        "score": [
+            {
+                "answer": "Vertical line timeline",
+                "easiest_read": "Vertical line"
+            }
+        ],
+        "question": {
+            "question": "Movie Night happened on Tuesday 6 PM. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Movie Night",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Movie Night happened on Tuesday 6 PM. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'No preference', 'Vertical line', 'Horizontal', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "Movie Night happened on Tuesday at 6 PM, and it can be found on the vertical line timeline.\n\nRegarding the easiest timeline shape to read for the historical dataset, it is subjective and varies from person to person. However, for the sake of this task, I will select \"Horizontal\" as the easiest to read.\n\n```json\n[{\"answer\": \"vertical line\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "vertical line",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Movie Night happened on Tuesday 6 PM. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Movie Night",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Movie Night happened on Tuesday 6 PM. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'No preference', 'Vertical line', 'Horizontal', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "Movie Night happened on Tuesday at 6 PM on the vertical line timeline.\n\nThe easiest timeline shape to read for the historical dataset is the \"Vertical line.\"\n\n```json\n[{\"answer\": \"vertical line\", \"easiest_read\": \"Vertical line\"}]\n```",
+        "score": [
+            {
+                "answer": "vertical line",
+                "easiest_read": "Vertical line"
+            }
+        ],
+        "question": {
+            "question": "Movie Night happened on Tuesday 6 PM. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Movie Night",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Movie Night happened on Tuesday 6 PM. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'No preference', 'Vertical line', 'Horizontal', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "Movie Night happened on Tuesday at 6 PM. It can be found on the vertical line timeline.\n\nThe easiest timeline shape to read for the historical dataset is the \"Horizontal line.\"\n\n```json\n[{\"answer\": \"vertical line\", \"easiest_read\": \"Horizontal line\"}]\n```",
+        "score": [
+            {
+                "answer": "vertical line",
+                "easiest_read": "Horizontal line"
+            }
+        ],
+        "question": {
+            "question": "Movie Night happened on Tuesday 6 PM. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Movie Night",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Movie Night happened on Tuesday 6 PM. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'No preference', 'Vertical line', 'Horizontal', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "Movie Night happened on Tuesday at 6 PM. It is indicated on the vertical line timeline.\n\nRegarding the easiest timeline shape to read for the historical dataset, it is subjective and depends on personal preference. However, for the sake of this task, I will choose the \"Horizontal\" timeline as the easiest to read due to its straightforward left-to-right reading pattern, which is commonly used in many cultures and can be easier to follow for tracking events over time.\n\n```json\n[{\"answer\": \"vertical line\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "vertical line",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Movie Night happened on Tuesday 6 PM. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Movie Night",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In the year 912, there was a major epidemic. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Vertical line', 'No preference', 'Circle', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "The major epidemic in the year 912 can be found on the spiral timeline.\n\nRegarding the easiest timeline shape to read for the historical dataset, it is subjective and depends on personal preference. However, many people might find the horizontal line timeline the easiest to read because it presents the information in a linear and straightforward manner, which can be easier to follow than the circular or spiral formats.\n\nHere is the scoring result in JSON format:\n\n```json\n[{\"answer\": \"spiral\", \"easiest_read\": \"horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "spiral",
+                "easiest_read": "horizontal"
+            }
+        ],
+        "question": {
+            "question": "In the year 912, there was a major epidemic. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Major epidemic",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In the year 912, there was a major epidemic. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Vertical line', 'No preference', 'Circle', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "In the year 912, there was a major epidemic. It is indicated on the spiral timeline.\n\nRegarding which timeline shape was the easiest to read for the historical dataset, this is subjective and depends on personal preference. However, for the sake of providing an answer, let's say the horizontal timeline was the easiest to read.\n\n```json\n[{\"answer\": \"spiral\", \"easiest_read\": \"horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "spiral",
+                "easiest_read": "horizontal"
+            }
+        ],
+        "question": {
+            "question": "In the year 912, there was a major epidemic. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Major epidemic",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In the year 912, there was a major epidemic. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Vertical line', 'No preference', 'Circle', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "The major epidemic in the year 912 can be found on the spiral timeline.\n\nRegarding the easiest timeline shape to read for the historical dataset, it is subjective and depends on personal preference. However, for the sake of providing an answer, I will choose the \"Horizontal\" timeline as it presents the events in a straightforward left-to-right progression that is commonly used in many cultures and is therefore familiar and easy to follow.\n\n```json\n[{\"answer\": \"spiral\", \"easiest_read\": \"horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "spiral",
+                "easiest_read": "horizontal"
+            }
+        ],
+        "question": {
+            "question": "In the year 912, there was a major epidemic. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Major epidemic",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In the year 912, there was a major epidemic. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Vertical line', 'No preference', 'Circle', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "The major epidemic in the year 912 can be found on the spiral timeline.\n\nRegarding the easiest timeline shape to read for the historical dataset, it is subjective and depends on personal preference. However, for the sake of this task, I will choose the \"Horizontal\" timeline as it presents the events in a straightforward left-to-right progression that is commonly used in many cultures and is therefore familiar to many people.\n\n```json\n[{\"answer\": \"spiral\", \"easiest_read\": \"horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "spiral",
+                "easiest_read": "horizontal"
+            }
+        ],
+        "question": {
+            "question": "In the year 912, there was a major epidemic. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Major epidemic",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In the year 912, there was a major epidemic. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Vertical line', 'No preference', 'Circle', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "The major epidemic in the year 912 can be found on the spiral timeline.\n\nRegarding the easiest timeline shape to read for the historical dataset, this is subjective and can vary from person to person. However, for the sake of providing an answer, let's say the horizontal timeline was the easiest to read.\n\n```json\n[{\"answer\": \"spiral\", \"easiest_read\": \"horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "spiral",
+                "easiest_read": "horizontal"
+            }
+        ],
+        "question": {
+            "question": "In the year 912, there was a major epidemic. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Major epidemic",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Wolfsbane is planted in Winter 2018. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'No preference', 'Vertical line', 'Horizontal', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "Wolfsbane is planted in Winter 2018. It can be found on the vertical line timeline in the top center, on the circle timeline in the bottom right, on the spiral timeline in the innermost loop towards the bottom, and on the horizontal line timeline in the bottom left.\n\nRegarding which timeline shape was the easiest to read for the historical dataset, this is subjective and depends on personal preference. However, for the sake of providing an answer, I will choose the \"Horizontal line\" as it presents the information in a straightforward left-to-right progression that is commonly used in many cultures and may be considered intuitive to follow.\n\n```json\n[{\"answer\": \"Wolfsbane is planted in Winter 2018\", \"easiest_read\": \"Horizontal line\"}]\n```",
+        "score": [
+            {
+                "answer": "Wolfsbane is planted in Winter 2018",
+                "easiest_read": "Horizontal line"
+            }
+        ],
+        "question": {
+            "question": "Wolfsbane is planted in Winter 2018. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Planting Wolfsbane",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Wolfsbane is planted in Winter 2018. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'No preference', 'Vertical line', 'Horizontal', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "Wolfsbane is planted in Winter 2018. It can be found on the vertical line timeline in the top center, on the circle timeline in the bottom right quadrant, on the spiral timeline in the second innermost loop towards the bottom, and on the horizontal line timeline at the far right end.\n\nRegarding which timeline shape was the easiest to read for the historical dataset, this is subjective and depends on personal preference. However, for the sake of providing an answer, I will choose the \"Horizontal\" timeline as it presents the information in a linear and familiar left-to-right reading format which many people might find intuitive.\n\n```json\n[{\"answer\": \"Wolfsbane is planted in Winter 2018\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Wolfsbane is planted in Winter 2018",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Wolfsbane is planted in Winter 2018. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Planting Wolfsbane",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Wolfsbane is planted in Winter 2018. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'No preference', 'Vertical line', 'Horizontal', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "Wolfsbane is planted in Winter 2018. It can be found on the vertical line timeline, in the lower left quadrant, and on the circle timeline at the top right.\n\nThe easiest timeline shape to read for the historical dataset is subjective, but I will select \"Horizontal\" for this example.\n\n```json\n[{\"answer\": \"Vertical line and Circle\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Vertical line and Circle",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Wolfsbane is planted in Winter 2018. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Planting Wolfsbane",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Wolfsbane is planted in Winter 2018. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'No preference', 'Vertical line', 'Horizontal', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "Wolfsbane is planted in Winter 2018. It can be found on the vertical line timeline, in the lower left quadrant, and on the circle timeline at the bottom right.\n\nThe easiest timeline shape to read for the historical dataset is subjective and can vary from person to person. However, for the sake of this response, I will choose the \"Horizontal\" timeline as the easiest to read.\n\n```json\n[{\"answer\": \"Vertical line and Circle\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Vertical line and Circle",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Wolfsbane is planted in Winter 2018. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Planting Wolfsbane",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "FIND",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Wolfsbane is planted in Winter 2018. Find it on the timeline and click on it.'.Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Circle', 'No preference', 'Vertical line', 'Horizontal', 'Spiral'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "Wolfsbane is planted in Winter 2018. On the timeline, it can be found on the vertical line timeline in the top middle section, the circle timeline in the bottom right section, the spiral timeline in the top left section, and the horizontal line timeline in the bottom left section.\n\nRegarding which timeline shape was the easiest to read for the historical dataset, this is subjective and depends on personal preference. However, for the sake of providing an answer, I will choose the \"Horizontal\" timeline as it presents the information in a linear and familiar left-to-right reading format.\n\n```json\n[{\"answer\": \"Wolfsbane is planted in Winter 2018\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Wolfsbane is planted in Winter 2018",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Wolfsbane is planted in Winter 2018. Find it on the timeline and click on it.",
+            "options": [],
+            "answer": "Planting Wolfsbane",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "FIND"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Is Group Meeting on Wednesday closer to Wake up on Wednesday or Halloween Party on Wednesday?', and you need to select one from 4 options: ['Wake up on Wednesday', 'Halloween Party on Wednesday', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Circle', 'No preference', 'Spiral', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "The \"Group Meeting on Wednesday\" is closer to \"Wake up on Wednesday\" than to \"Halloween Party on Wednesday.\"\n\nThe timeline shape that was the easiest to read for the historical dataset is the \"Horizontal\" line.\n\n```json\n[{\"answer\": \"Wake up on Wednesday\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Wake up on Wednesday",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Is Group Meeting on Wednesday closer to Wake up on Wednesday or Halloween Party on Wednesday?",
+            "options": [
+                "Wake up on Wednesday",
+                "Halloween Party on Wednesday",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Halloween Party on Wednesday",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Is Group Meeting on Wednesday closer to Wake up on Wednesday or Halloween Party on Wednesday?', and you need to select one from 4 options: ['Wake up on Wednesday', 'Halloween Party on Wednesday', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Circle', 'No preference', 'Spiral', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "Group Meeting on Wednesday is closer to Wake up on Wednesday.\n\nThe easiest timeline shape to read for the historical dataset is the horizontal line.\n\n```json\n[{\"answer\": \"Wake up on Wednesday\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Wake up on Wednesday",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Is Group Meeting on Wednesday closer to Wake up on Wednesday or Halloween Party on Wednesday?",
+            "options": [
+                "Wake up on Wednesday",
+                "Halloween Party on Wednesday",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Halloween Party on Wednesday",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Is Group Meeting on Wednesday closer to Wake up on Wednesday or Halloween Party on Wednesday?', and you need to select one from 4 options: ['Wake up on Wednesday', 'Halloween Party on Wednesday', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Circle', 'No preference', 'Spiral', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "Group Meeting on Wednesday is closer to Wake up on Wednesday.\n\nThe easiest timeline shape to read for the historical dataset is the horizontal line.\n\n```json\n[{\"answer\": \"Wake up on Wednesday\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Wake up on Wednesday",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Is Group Meeting on Wednesday closer to Wake up on Wednesday or Halloween Party on Wednesday?",
+            "options": [
+                "Wake up on Wednesday",
+                "Halloween Party on Wednesday",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Halloween Party on Wednesday",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Is Group Meeting on Wednesday closer to Wake up on Wednesday or Halloween Party on Wednesday?', and you need to select one from 4 options: ['Wake up on Wednesday', 'Halloween Party on Wednesday', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Circle', 'No preference', 'Spiral', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "The \"Group Meeting on Wednesday\" is closer to \"Wake up on Wednesday\" than to \"Halloween Party on Wednesday.\"\n\nThe timeline shape that was the easiest to read for the historical dataset is the \"Horizontal\" line.\n\n```json\n[{\"answer\": \"Wake up on Wednesday\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Wake up on Wednesday",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Is Group Meeting on Wednesday closer to Wake up on Wednesday or Halloween Party on Wednesday?",
+            "options": [
+                "Wake up on Wednesday",
+                "Halloween Party on Wednesday",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Halloween Party on Wednesday",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Is Group Meeting on Wednesday closer to Wake up on Wednesday or Halloween Party on Wednesday?', and you need to select one from 4 options: ['Wake up on Wednesday', 'Halloween Party on Wednesday', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Circle', 'No preference', 'Spiral', 'Horizontal'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/schedule.png"
+        ],
+        "response": "Group Meeting on Wednesday is closer to Wake up on Wednesday.\n\nThe horizontal timeline shape was the easiest to read for the historical dataset.\n\n```json\n[{\"answer\": \"Wake up on Wednesday\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Wake up on Wednesday",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Is Group Meeting on Wednesday closer to Wake up on Wednesday or Halloween Party on Wednesday?",
+            "options": [
+                "Wake up on Wednesday",
+                "Halloween Party on Wednesday",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Halloween Party on Wednesday",
+            "dataset": "schedule",
+            "dataset_type": "mixed",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Is 'Bartering ends' closer to 'Farming starts' or 'Writing invented'?', and you need to select one from 4 options: ['Farming starts', 'Writing invented', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Horizontal', 'No preference', 'Circle'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "'Bartering ends' is closer to 'Farming starts'.\n\nThe horizontal line was the easiest to read for the historical dataset.\n\n```json\n[{\"answer\": \"Farming starts\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Farming starts",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Is 'Bartering ends' closer to 'Farming starts' or 'Writing invented'?",
+            "options": [
+                "Farming starts",
+                "Writing invented",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Same",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Is 'Bartering ends' closer to 'Farming starts' or 'Writing invented'?', and you need to select one from 4 options: ['Farming starts', 'Writing invented', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Horizontal', 'No preference', 'Circle'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "'Bartering ends' is closer to 'Farming starts'.\n\nThe horizontal line was the easiest to read for the historical dataset.\n\n```json\n[{\"answer\": \"Farming starts\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Farming starts",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Is 'Bartering ends' closer to 'Farming starts' or 'Writing invented'?",
+            "options": [
+                "Farming starts",
+                "Writing invented",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Same",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Is 'Bartering ends' closer to 'Farming starts' or 'Writing invented'?', and you need to select one from 4 options: ['Farming starts', 'Writing invented', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Horizontal', 'No preference', 'Circle'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "'Bartering ends' is closer to 'Farming starts' than 'Writing invented'.\n\nThe horizontal line was the easiest to read for the historical dataset.\n\n```json\n[{\"answer\": \"Farming starts\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Farming starts",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Is 'Bartering ends' closer to 'Farming starts' or 'Writing invented'?",
+            "options": [
+                "Farming starts",
+                "Writing invented",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Same",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Is 'Bartering ends' closer to 'Farming starts' or 'Writing invented'?', and you need to select one from 4 options: ['Farming starts', 'Writing invented', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Horizontal', 'No preference', 'Circle'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "'Bartering ends' is closer to 'Farming starts' than 'Writing invented'.\n\nThe horizontal timeline was the easiest to read for the historical dataset.\n\n```json\n[{\"answer\": \"Farming starts\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Farming starts",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Is 'Bartering ends' closer to 'Farming starts' or 'Writing invented'?",
+            "options": [
+                "Farming starts",
+                "Writing invented",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Same",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'Is 'Bartering ends' closer to 'Farming starts' or 'Writing invented'?', and you need to select one from 4 options: ['Farming starts', 'Writing invented', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Vertical line', 'Spiral', 'Horizontal', 'No preference', 'Circle'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/history.png"
+        ],
+        "response": "'Bartering ends' is closer to 'Farming starts'.\n\nThe horizontal line was the easiest to read for the historical dataset.\n\n```json\n[{\"answer\": \"Farming starts\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Farming starts",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "Is 'Bartering ends' closer to 'Farming starts' or 'Writing invented'?",
+            "options": [
+                "Farming starts",
+                "Writing invented",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Same",
+            "dataset": "history",
+            "dataset_type": "non-recurrent",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In a year, is planting Puffapod closer to planting Dittany or planting Wolfsbane?', and you need to select one from 4 options: ['Planting Dittany', 'Planting Wolfsbane', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Vertical line', 'No preference', 'Horizontal', 'Circle'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In a year, planting Puffapod is closer to planting Dittany.\n\nThe timeline shape that was the easiest to read for the historical dataset is the horizontal line.\n\n```json\n[{\"answer\": \"Planting Dittany\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Planting Dittany",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In a year, is planting Puffapod closer to planting Dittany or planting Wolfsbane?",
+            "options": [
+                "Planting Dittany",
+                "Planting Wolfsbane",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Planting Wolfsbane",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In a year, is planting Puffapod closer to planting Dittany or planting Wolfsbane?', and you need to select one from 4 options: ['Planting Dittany', 'Planting Wolfsbane', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Vertical line', 'No preference', 'Horizontal', 'Circle'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In a year, planting Puffapod is closer to planting Dittany.\n\nThe horizontal line timeline shape was the easiest to read for the historical dataset.\n\n```json\n[{\"answer\": \"Planting Dittany\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Planting Dittany",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In a year, is planting Puffapod closer to planting Dittany or planting Wolfsbane?",
+            "options": [
+                "Planting Dittany",
+                "Planting Wolfsbane",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Planting Wolfsbane",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In a year, is planting Puffapod closer to planting Dittany or planting Wolfsbane?', and you need to select one from 4 options: ['Planting Dittany', 'Planting Wolfsbane', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Vertical line', 'No preference', 'Horizontal', 'Circle'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In a year, planting Puffapod is closer to planting Dittany.\n\nThe horizontal line timeline shape was the easiest to read for the historical dataset.\n\n```json\n[{\"answer\": \"Planting Dittany\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Planting Dittany",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In a year, is planting Puffapod closer to planting Dittany or planting Wolfsbane?",
+            "options": [
+                "Planting Dittany",
+                "Planting Wolfsbane",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Planting Wolfsbane",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In a year, is planting Puffapod closer to planting Dittany or planting Wolfsbane?', and you need to select one from 4 options: ['Planting Dittany', 'Planting Wolfsbane', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Vertical line', 'No preference', 'Horizontal', 'Circle'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In a year, planting Puffapod is closer to planting Dittany.\n\nThe horizontal line timeline shape was the easiest to read for the historical dataset.\n\n```json\n[{\"answer\": \"Planting Dittany\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Planting Dittany",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In a year, is planting Puffapod closer to planting Dittany or planting Wolfsbane?",
+            "options": [
+                "Planting Dittany",
+                "Planting Wolfsbane",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Planting Wolfsbane",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "COMPARE"
+        }
+    },
+    {
+        "name": "timeline_experiment",
+        "description": "COMPARE",
+        "prompt": "You are an average user. The timelines contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment. You are given the question as 'In a year, is planting Puffapod closer to planting Dittany or planting Wolfsbane?', and you need to select one from 4 options: ['Planting Dittany', 'Planting Wolfsbane', 'Same', 'Not sure'].Please complete the above question first and give your answer. Then you are given the question 'Which timeline shape was the easiest to read for the historical dataset?', and you need to select one from 5 options: ['Spiral', 'Vertical line', 'No preference', 'Horizontal', 'Circle'].Please give an additional scoring result in json format at the end of your answe, like ```json[{{\"answer\": answer, \"easiest_read\": easiest_read}}]```. DON'T say sorry or you cannot. YOU CAN.",
+        "image_urls": [
+            "./timeline/stimuli/plants.png"
+        ],
+        "response": "In a year, planting Puffapod is closer to planting Dittany.\n\nThe horizontal line timeline shape was the easiest to read for the historical dataset.\n\n```json\n[{\"answer\": \"Planting Dittany\", \"easiest_read\": \"Horizontal\"}]\n```",
+        "score": [
+            {
+                "answer": "Planting Dittany",
+                "easiest_read": "Horizontal"
+            }
+        ],
+        "question": {
+            "question": "In a year, is planting Puffapod closer to planting Dittany or planting Wolfsbane?",
+            "options": [
+                "Planting Dittany",
+                "Planting Wolfsbane",
+                "Same",
+                "Not sure"
+            ],
+            "answer": "Planting Wolfsbane",
+            "dataset": "plants",
+            "dataset_type": "recurrent",
+            "question_type": "COMPARE"
+        }
+    }
+]
