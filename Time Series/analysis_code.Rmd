@@ -12,26 +12,13 @@ library(ggpattern)
 library(boot)
 library(tidyr)
 set.seed(10387)
-# others
-#data = fromJSON("time_series.json")
-# rag
-#data = fromJSON("time_series_rag.json")
-# gray
-data = fromJSON("time_series_gray.json")
-
-# whole
-#data.processed = data %>%  filter(grepl("rating", description) & !grepl("gray", description))
-# Cartesian
-#data.processed = data %>%  filter(grepl("rating", description) & !grepl("polar", description)& !grepl("gray", description))
-# polar
-#data.processed = data %>%  filter(grepl("rating_polar", description))
-# rag
-#data.processed = data %>%  filter(grepl("rating_round2", description)) 
-# gray
-data.processed = data %>%  filter(grepl("rating_gray", description))
 ```
 
-```{r warning=FALSE}
+# Cartesian
+```{r}
+data = fromJSON("time_series.json")
+data.processed = data %>%  filter(grepl("rating", description) & !grepl("polar", description)& !grepl("gray", description))
+
 rating.reshaped = reshape2::melt(data.processed$json_format_data)
 colnames(rating.reshaped) = c("rating","plot","item","row_number")
 data.processed <- data.processed %>% mutate(row_number = row_number())
@@ -45,16 +32,6 @@ data.reshaped <- data.reshaped %>%
     startsWith(description, "trend_detection") ~ "trend detection",
     startsWith(description, "comparison") ~ "comparison",
   )) 
-# whole
-#%>%
-#mutate(plot = case_when(
-#    plot=="line chart" ~ "Position",
-#    plot=="radar" ~ "Position",
-#    plot=="heatmap" ~ "Colour",
-#    plot=="circular_heatmap" ~ "Colour",
-#    plot=="icicle" ~ "Area",
-#    plot=="sunburst" ~ "Area",
-#  ))
 colnames(data.reshaped)[4] = "task"
 bootstrap_mean <- function(data, indices, column) {
   d <- data[indices, ]
@@ -74,29 +51,134 @@ for(task_ in unique(data.reshaped$task)) {
   }
 }
 
-```
-
-```{r}
-# whole
-#stat$plot <- factor(stat$plot, levels = c("Position", "Colour", "Area"))
-# Cartesian & rag & gray
 stat$plot <- factor(stat$plot, levels = c("line chart", "heatmap", "icicle"))
-# polar
-#stat$plot <- factor(stat$plot, levels = c("radar", "circular_heatmap", "sunburst"))
-
 stat$task <- factor(stat$task, levels = c("maxima", "minima", "comparison", "trend detection"))
 ggplot(stat, aes(x = item, y = mean, fill = plot)) + 
   geom_bar(stat = "identity", position = position_dodge(0.9),color = "black") + 
   geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), 
                 position = position_dodge(0.9), width = 0.25) + 
-  
-  # whole
-  #scale_fill_manual(values = c("#FFEACD", "#F5C294", "#D35A3E")) +
-  # Cartesian & rag & gray
     scale_fill_manual(values = c("#FFEACD", "#F5C294", "#D35A3E"),labels=c("Line chart","Rectangular heatmap","Icicle plot")) +
-  # polar
-  #scale_fill_manual(values = c("#FFEACD", "#F5C294", "#D35A3E"),labels=c("Radar chart","Circular heatmap","Sunburst visualisation")) +
-  
+  labs(x = NULL, y = "Average score on 5-point Likert scale") +
+  theme_minimal()+
+  theme(panel.grid.major.y = element_line(color = "grey", linewidth = 0.4),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.major.x = element_blank()) +
+  theme(axis.text.x = element_text(angle =45, hjust = 1)) +
+  theme(legend.position = "top") +
+  guides(fill = guide_legend(nrow = 1, title.position = "top", label.position = "right"))+
+  facet_wrap(~ task, scales = "free_x", ncol = 4, strip.position = "bottom") +
+  theme(strip.placement = "outside") +
+  scale_x_discrete(labels = c("confidence" = "Conf.", "easy to use" = "Ease-use"))+
+  theme(legend.title = element_blank())
+```
+# polar
+```{r}
+data = fromJSON("time_series.json")
+data.processed = data %>%  filter(grepl("rating_polar", description))
+
+rating.reshaped = reshape2::melt(data.processed$json_format_data)
+colnames(rating.reshaped) = c("rating","plot","item","row_number")
+data.processed <- data.processed %>% mutate(row_number = row_number())
+data.reshaped <- rating.reshaped %>% 
+  left_join(data.processed[, c("row_number", "description")], by = c("row_number" = "row_number")) %>%
+  select(-row_number)
+data.reshaped <- data.reshaped %>%
+  mutate(description = case_when(
+    startsWith(description, "maxima") ~ "maxima",
+    startsWith(description, "minima") ~ "minima",
+    startsWith(description, "trend_detection") ~ "trend detection",
+    startsWith(description, "comparison") ~ "comparison",
+  )) 
+colnames(data.reshaped)[4] = "task"
+bootstrap_mean <- function(data, indices, column) {
+  d <- data[indices, ]
+  mean(d[[column]], na.rm = TRUE)
+}
+stat <- data.frame(task = character(), plot = character(), item = character(), mean = numeric(), ci_lower = numeric(), ci_upper = numeric())
+
+for(task_ in unique(data.reshaped$task)) {
+  for(plot_ in unique(data.reshaped$plot)){
+    for(item_ in unique(data.reshaped$item)){
+      group_data = data.reshaped %>% filter(task == task_)%>% filter(plot == plot_)%>% filter(item == item_)
+  boot_result <- boot(data = group_data, statistic = function(data, indices) bootstrap_mean(data, indices, "rating"), R = 10000)
+  ci = boot.ci(boot_result, type = "bca")$bca[4:5]
+  new_row = list(task = task_, plot = plot_, item = item_, mean=mean(group_data[["rating"]], na.rm = TRUE), ci_lower=ci[1], ci_upper=ci[2])
+  stat <- bind_rows(stat, new_row)
+  }
+  }
+}
+
+stat$plot <- factor(stat$plot, levels = c("radar", "circular_heatmap", "sunburst"))
+stat$task <- factor(stat$task, levels = c("maxima", "minima", "comparison", "trend detection"))
+ggplot(stat, aes(x = item, y = mean, fill = plot)) + 
+  geom_bar(stat = "identity", position = position_dodge(0.9),color = "black") + 
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), 
+                position = position_dodge(0.9), width = 0.25) + 
+    scale_fill_manual(values = c("#FFEACD", "#F5C294", "#D35A3E"),labels=c("Radar chart","Circular heatmap","Sunburst visualisation")) +
+  labs(x = NULL, y = "Average score on 5-point Likert scale") +
+  theme_minimal()+
+  theme(panel.grid.major.y = element_line(color = "grey", linewidth = 0.4),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.major.x = element_blank()) +
+  theme(axis.text.x = element_text(angle =45, hjust = 1)) +
+  theme(legend.position = "top") +
+  guides(fill = guide_legend(nrow = 1, title.position = "top", label.position = "right"))+
+  facet_wrap(~ task, scales = "free_x", ncol = 4, strip.position = "bottom") +
+  theme(strip.placement = "outside") +
+  scale_x_discrete(labels = c("confidence" = "Conf.", "easy to use" = "Ease-use"))+
+  theme(legend.title = element_blank())
+```
+# whole
+```{r}
+data = fromJSON("time_series.json")
+data.processed = data %>%  filter(grepl("rating", description) & !grepl("gray", description))
+rating.reshaped = reshape2::melt(data.processed$json_format_data)
+colnames(rating.reshaped) = c("rating","plot","item","row_number")
+data.processed <- data.processed %>% mutate(row_number = row_number())
+data.reshaped <- rating.reshaped %>% 
+  left_join(data.processed[, c("row_number", "description")], by = c("row_number" = "row_number")) %>%
+  select(-row_number)
+data.reshaped <- data.reshaped %>%
+  mutate(description = case_when(
+    startsWith(description, "maxima") ~ "maxima",
+    startsWith(description, "minima") ~ "minima",
+    startsWith(description, "trend_detection") ~ "trend detection",
+    startsWith(description, "comparison") ~ "comparison",
+  )) %>%
+mutate(plot = case_when(
+    plot=="line chart" ~ "Position",
+    plot=="radar" ~ "Position",
+    plot=="heatmap" ~ "Colour",
+    plot=="circular_heatmap" ~ "Colour",
+    plot=="icicle" ~ "Area",
+    plot=="sunburst" ~ "Area",
+  ))
+colnames(data.reshaped)[4] = "task"
+bootstrap_mean <- function(data, indices, column) {
+  d <- data[indices, ]
+  mean(d[[column]], na.rm = TRUE)
+}
+stat <- data.frame(task = character(), plot = character(), item = character(), mean = numeric(), ci_lower = numeric(), ci_upper = numeric())
+
+for(task_ in unique(data.reshaped$task)) {
+  for(plot_ in unique(data.reshaped$plot)){
+    for(item_ in unique(data.reshaped$item)){
+      group_data = data.reshaped %>% filter(task == task_)%>% filter(plot == plot_)%>% filter(item == item_)
+  boot_result <- boot(data = group_data, statistic = function(data, indices) bootstrap_mean(data, indices, "rating"), R = 10000)
+  ci = boot.ci(boot_result, type = "bca")$bca[4:5]
+  new_row = list(task = task_, plot = plot_, item = item_, mean=mean(group_data[["rating"]], na.rm = TRUE), ci_lower=ci[1], ci_upper=ci[2])
+  stat <- bind_rows(stat, new_row)
+  }
+  }
+}
+
+stat$plot <- factor(stat$plot, levels = c("Position", "Colour", "Area"))
+stat$task <- factor(stat$task, levels = c("maxima", "minima", "comparison", "trend detection"))
+ggplot(stat, aes(x = item, y = mean, fill = plot)) + 
+  geom_bar(stat = "identity", position = position_dodge(0.9),color = "black") + 
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), 
+                position = position_dodge(0.9), width = 0.25) + 
+  scale_fill_manual(values = c("#FFEACD", "#F5C294", "#D35A3E")) +
   labs(x = NULL, y = "Average score on 5-point Likert scale") +
   theme_minimal()+
   theme(panel.grid.major.y = element_line(color = "grey", linewidth = 0.4),
@@ -111,13 +193,157 @@ ggplot(stat, aes(x = item, y = mean, fill = plot)) +
   theme(legend.title = element_blank())
 ```
 
+
+# gray
+```{r}
+data = fromJSON("time_series_gray.json")
+data.processed = data %>%  filter(grepl("rating_gray", description))
+rating.reshaped = reshape2::melt(data.processed$json_format_data)
+colnames(rating.reshaped) = c("rating","plot","item","row_number")
+data.processed <- data.processed %>% mutate(row_number = row_number())
+data.reshaped <- rating.reshaped %>% 
+  left_join(data.processed[, c("row_number", "description")], by = c("row_number" = "row_number")) %>%
+  select(-row_number)
+data.reshaped <- data.reshaped %>%
+  mutate(description = case_when(
+    startsWith(description, "maxima") ~ "maxima",
+    startsWith(description, "minima") ~ "minima",
+    startsWith(description, "trend_detection") ~ "trend detection",
+    startsWith(description, "comparison") ~ "comparison",
+  )) 
+colnames(data.reshaped)[4] = "task"
+bootstrap_mean <- function(data, indices, column) {
+  d <- data[indices, ]
+  mean(d[[column]], na.rm = TRUE)
+}
+stat <- data.frame(task = character(), plot = character(), item = character(), mean = numeric(), ci_lower = numeric(), ci_upper = numeric())
+
+for(task_ in unique(data.reshaped$task)) {
+  for(plot_ in unique(data.reshaped$plot)){
+    for(item_ in unique(data.reshaped$item)){
+      group_data = data.reshaped %>% filter(task == task_)%>% filter(plot == plot_)%>% filter(item == item_)
+  boot_result <- boot(data = group_data, statistic = function(data, indices) bootstrap_mean(data, indices, "rating"), R = 10000)
+  ci = boot.ci(boot_result, type = "bca")$bca[4:5]
+  new_row = list(task = task_, plot = plot_, item = item_, mean=mean(group_data[["rating"]], na.rm = TRUE), ci_lower=ci[1], ci_upper=ci[2])
+  stat <- bind_rows(stat, new_row)
+  }
+  }
+}
+
+stat$plot <- factor(stat$plot, levels = c("line chart", "heatmap", "icicle"))
+stat$task <- factor(stat$task, levels = c("maxima", "minima", "comparison", "trend detection"))
+ggplot(stat, aes(x = item, y = mean, fill = plot)) + 
+  geom_bar(stat = "identity", position = position_dodge(0.9),color = "black") + 
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), 
+                position = position_dodge(0.9), width = 0.25) + 
+    scale_fill_manual(values = c("#FFEACD", "#F5C294", "#D35A3E"),labels=c("Line chart","Rectangular heatmap","Icicle plot")) +
+  labs(x = NULL, y = "Average score on 5-point Likert scale") +
+  theme_minimal()+
+  theme(panel.grid.major.y = element_line(color = "grey", linewidth = 0.4),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.major.x = element_blank()) +
+  theme(axis.text.x = element_text(angle =45, hjust = 1)) +
+  theme(legend.position = "top") +
+  guides(fill = guide_legend(nrow = 1, title.position = "top", label.position = "right"))+
+  facet_wrap(~ task, scales = "free_x", ncol = 4, strip.position = "bottom") +
+  theme(strip.placement = "outside") +
+  scale_x_discrete(labels = c("confidence" = "Conf.", "easy to use" = "Ease-use"))+
+  theme(legend.title = element_blank())
+```
+
+# RAG
+```{r}
+data = fromJSON("time_series_rag.json")
+data.processed = data %>%  filter(grepl("rating_round2", description))
+rating.reshaped = reshape2::melt(data.processed$json_format_data)
+colnames(rating.reshaped) = c("rating","plot","item","row_number")
+data.processed <- data.processed %>% mutate(row_number = row_number())
+data.reshaped <- rating.reshaped %>% 
+  left_join(data.processed[, c("row_number", "description")], by = c("row_number" = "row_number")) %>%
+  select(-row_number)
+data.reshaped <- data.reshaped %>%
+  mutate(description = case_when(
+    startsWith(description, "maxima") ~ "maxima",
+    startsWith(description, "minima") ~ "minima",
+    startsWith(description, "trend_detection") ~ "trend detection",
+    startsWith(description, "comparison") ~ "comparison",
+  )) 
+colnames(data.reshaped)[4] = "task"
+bootstrap_mean <- function(data, indices, column) {
+  d <- data[indices, ]
+  mean(d[[column]], na.rm = TRUE)
+}
+stat <- data.frame(task = character(), plot = character(), item = character(), mean = numeric(), ci_lower = numeric(), ci_upper = numeric())
+
+for(task_ in unique(data.reshaped$task)) {
+  for(plot_ in unique(data.reshaped$plot)){
+    for(item_ in unique(data.reshaped$item)){
+      group_data = data.reshaped %>% filter(task == task_)%>% filter(plot == plot_)%>% filter(item == item_)
+  boot_result <- boot(data = group_data, statistic = function(data, indices) bootstrap_mean(data, indices, "rating"), R = 10000)
+  ci = boot.ci(boot_result, type = "bca")$bca[4:5]
+  new_row = list(task = task_, plot = plot_, item = item_, mean=mean(group_data[["rating"]], na.rm = TRUE), ci_lower=ci[1], ci_upper=ci[2])
+  stat <- bind_rows(stat, new_row)
+  }
+  }
+}
+
+stat$plot <- factor(stat$plot, levels = c("line chart", "heatmap", "icicle"))
+stat$task <- factor(stat$task, levels = c("maxima", "minima", "comparison", "trend detection"))
+ggplot(stat, aes(x = item, y = mean, fill = plot)) + 
+  geom_bar(stat = "identity", position = position_dodge(0.9),color = "black") + 
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), 
+                position = position_dodge(0.9), width = 0.25) + 
+    scale_fill_manual(values = c("#FFEACD", "#F5C294", "#D35A3E"),labels=c("Line chart","Rectangular heatmap","Icicle plot")) +
+  labs(x = NULL, y = "Average score on 5-point Likert scale") +
+  theme_minimal()+
+  theme(panel.grid.major.y = element_line(color = "grey", linewidth = 0.4),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.major.x = element_blank()) +
+  theme(axis.text.x = element_text(angle =45, hjust = 1)) +
+  theme(legend.position = "top") +
+  guides(fill = guide_legend(nrow = 1, title.position = "top", label.position = "right"))+
+  facet_wrap(~ task, scales = "free_x", ncol = 4, strip.position = "bottom") +
+  theme(strip.placement = "outside") +
+  scale_x_discrete(labels = c("confidence" = "Conf.", "easy to use" = "Ease-use"))+
+  theme(legend.title = element_blank())
+```
+
+
+# ranking before/after RAG
 ```{r}
 # before rag
 data.rank = fromJSON("time_series.json")
 data.rank.processed = data.rank %>%  filter(grepl("rating", description) & !grepl("polar", description)& !grepl("gray", description))
+
+rating.rank.reshaped = reshape2::melt(data.rank.processed$json_format_data)
+colnames(rating.rank.reshaped) = c("rating","plot","item","row_number")
+data.rank.processed <- data.rank.processed %>% mutate(row_number = row_number())
+data.rank.reshaped <- rating.rank.reshaped %>% 
+  left_join(data.rank.processed[, c("row_number", "description")], by = c("row_number" = "row_number"))
+data.rank.reshaped <- data.rank.reshaped %>%
+  mutate(description = case_when(
+    startsWith(description, "maxima") ~ "maxima",
+    startsWith(description, "minima") ~ "minima",
+    startsWith(description, "trend_detection") ~ "trend detection",
+    startsWith(description, "comparison") ~ "comparison",
+  )) %>% filter(description=="comparison")
+
+data.rank.reshaped %>%
+  group_by(item, row_number) %>%
+  summarise(icicle_max_or_tied = rating[plot == "icicle"] == max(rating), .groups = 'drop') %>%
+  group_by(item) %>%
+  summarise(ranked_first_percentage = mean(icicle_max_or_tied))
+
+data.rank.reshaped %>%
+  group_by(item, row_number) %>%
+  summarise(icicle_min_or_tied = rating[plot == "icicle"] == min(rating), .groups = 'drop') %>%
+  group_by(item) %>%
+  summarise(ranked_last_percentage = mean(icicle_min_or_tied))
+```
+```{r}
 # after rag
-#data.rank = fromJSON("time_series_rag.json")
-#data.rank.processed = data.rank %>%  filter(grepl("rating_round2", description))
+data.rank = fromJSON("time_series_rag.json")
+data.rank.processed = data.rank %>%  filter(grepl("rating_round2", description))
 
 rating.rank.reshaped = reshape2::melt(data.rank.processed$json_format_data)
 colnames(rating.rank.reshaped) = c("rating","plot","item","row_number")
