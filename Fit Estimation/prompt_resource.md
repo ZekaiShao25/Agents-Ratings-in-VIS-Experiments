@@ -1,5 +1,8 @@
 # fit
 
++ For each prompt, where each sentence is preceded by a symbol identifying it, `[A]` indicates that the sentence was migrated directly from the paper material, `[B]` indicates that the sentence was modified slightly based on the paper material, and `[C]` indicates that the sentence was added by ourselves based on specific needs.
++ Sentences identified by `[A]` and `[B]` have a background color, which is used to distinguish between different sources of the paper material. Sentences identified by the `[C]` do not have a background color.
+
 ## Role Play
 
 #### prompt

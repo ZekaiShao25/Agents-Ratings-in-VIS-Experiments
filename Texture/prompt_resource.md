@@ -1,5 +1,8 @@
 # texture
 
++ For each prompt, where each sentence is preceded by a symbol identifying it, `[A]` indicates that the sentence was migrated directly from the paper material, `[B]` indicates that the sentence was modified slightly based on the paper material, and `[C]` indicates that the sentence was added by ourselves based on specific needs.
++ Sentences identified by `[A]` and `[B]` have a background color, which is used to distinguish between different sources of the paper material. Sentences identified by the `[C]` do not have a background color.
+
 ## Role Play
 
 #### prompt
@@ -23,8 +26,6 @@
 <span style="background-color: #cbf1ca">We then gave them a brief explanation of the vibratory effect</span>, and instructed them to focus only on the visual appearance of the charts. Subsequently, we asked them to evaluate a total of eight images, presented in two separate blocks: one containing geometric and the other iconic textures. Each block contained four images, with the block order and the images within them randomized. <span style="background-color: #a8f0a7">For each block, we asked participants to rate the aesthetics of each visualization using a 7-point Likert scale via the 5 items of the BeauVis scale and</span> <span style="background-color: #58f066">added 1 item to assess the degree to which they perceived a vibratory effect.** We included one attention check question in this section.</span> <span style="background-color: #34da31">Following the rating section, we asked participants to rank the four visualizations they had just evaluated based on their overall preference.</span> In addition, we asked them to provide a rationale for their selection of the highest-ranking visualization.
 
 ### readable
-
-不完整的实验，没有模拟预热实验
 
 #### prompt
 

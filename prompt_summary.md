@@ -1,7 +1,7 @@
 # Prompt Summary
 
 + The columns of this table represent the different experiments (seven in total), and the rows represent the kinds of prompts that the experiments may require.
-+ For the prompt in each cell, where each sentence is preceded by a symbol identifying it, `[A]` indicates that the sentence was migrated directly from the thesis material, `[B]` indicates that the sentence was modified slightly based on the thesis material, and `[C]` indicates that the sentence was added by ourselves based on specific needs.
++ For the prompt in each cell, where each sentence is preceded by a symbol identifying it, `[A]` indicates that the sentence was migrated directly from the paper material, `[B]` indicates that the sentence was modified slightly based on the paper material, and `[C]` indicates that the sentence was added by ourselves based on specific needs.
 + Sentences identified by `[A]` and `[B]` have a background color, which is used to distinguish between different sources of the paper material. The specific content of the paper material and its correspondence with the prompt are shown in the `prompt_resource.md` file in the directory corresponding to each experiment. Sentences identified by the `[C]` do not have a background color.
   
 <table>
@@ -14,7 +14,7 @@
     </tr>
     <tr>
         <th>Time Series</th>
-        <td><span style="background-color: #FFF2CC">[B]You are Alex, 22, an undergraduate student majoring in Computer Science, spending 25 hours per week on the computer. Enthusiastic about new technology. You are invited to help with a user study about time series visualizations.</span></td>
+        <td><span style="background-color: #FFF2CC">[B]You are an average user.</span></td>
         <td><span style="background-color: #cedfff">[B]These visualizations represent each day's sales. By looking at the visualization, you know that here are 112 days: Each day follows the structure 'Day X-Week Y-Month Z', where 'X' denotes the day of the week (ranging from Day 1 to Day 7) , 'Y' indicates the week of the month (ranging from Week 1 to Week 4), and 'Z' specifies the month of the year (January, February, March, April). </span><span style="background-color: #d7eefc">[B]For line chart, the y-value of point indicates the the daily sale. For heatmap, the color shade of the cell indicates the daily sale. For icicle plot, the size of the rectangle indicates the sale.</span></td>
         <td><span style="background-color: #cbf1ca">[A]By looking at these three visualizations (line chart, heatmap, icicle), your goal is to identify the day(Day X-Week Y-Month Z) with the absolute highest sales through individual visualisations.</span> [C]Just determine which day has the maximum sale.</td>
         <td>[C]Here's how one person accomplishes a task: {steps} Based on the knowledge you have, assuming you are this person, <span style="background-color: #F0DFC4">[A]you should answer two 5-point Likert scale questions for three different visualisations, ranging from strongly agree (5) to strongly disagree (1): (i) I feel confident about the given answer and (ii) I think this visualisation is easy to use for this task.</span> [C]And give the reason.</td>

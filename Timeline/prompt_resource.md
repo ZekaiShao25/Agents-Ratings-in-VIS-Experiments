@@ -1,5 +1,8 @@
 # timeline
 
++ For each prompt, where each sentence is preceded by a symbol identifying it, `[A]` indicates that the sentence was migrated directly from the paper material, `[B]` indicates that the sentence was modified slightly based on the paper material, and `[C]` indicates that the sentence was added by ourselves based on specific needs.
++ Sentences identified by `[A]` and `[B]` have a background color, which is used to distinguish between different sources of the paper material. Sentences identified by the `[C]` do not have a background color.
+
 ## Role Play
 
 #### prompt
@@ -53,8 +56,6 @@
 <span style="background-color: #cbf1ca">Compare time of <event1> relative <event2> or <event3>? Example: Did Cleopatra live closer to the launch of the first iPhone or the construction of the Pyramids? Users need to find 3 data points on the timelines and then compare the distance between pairs of data points. </span><span style="background-color: #a8f0a7">We will show you several different timelines. They will contain different events and be represented on different shapes. The data presented on the timeline is made up specifically for this experiment.</span>
 
 ### **EASIEST READ**
-
-没有按照论文中先预热后评估的顺序
 
 #### prompt
 

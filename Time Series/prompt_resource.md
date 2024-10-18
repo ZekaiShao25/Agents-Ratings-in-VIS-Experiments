@@ -1,10 +1,13 @@
 # time series
 
++ For each prompt, where each sentence is preceded by a symbol identifying it, `[A]` indicates that the sentence was migrated directly from the paper material, `[B]` indicates that the sentence was modified slightly based on the paper material, and `[C]` indicates that the sentence was added by ourselves based on specific needs.
++ Sentences identified by `[A]` and `[B]` have a background color, which is used to distinguish between different sources of the paper material. Sentences identified by the `[C]` do not have a background color.
+
 ## Role Play
 
 #### prompt
 
-<div style="background-color: #e1e1e1; color: #333333; padding: 10px; border-radius: 5px;"><span style="background-color: #FFF2CC">[B]You are Alex, 22, an undergraduate student majoring in Computer Science, spending 25 hours per week on the computer. Enthusiastic about new technology. You are invited to help with a user study about time series visualizations.</span></div>
+<div style="background-color: #e1e1e1; color: #333333; padding: 10px; border-radius: 5px;"><span style="background-color: #FFF2CC">[B]You are an average user.</span></div>
 
 #### resource
 
