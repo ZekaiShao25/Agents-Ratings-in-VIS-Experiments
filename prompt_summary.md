@@ -58,9 +58,9 @@
     </tr>
     <tr>
         <th>Literacy in Visualization</th>
-        <td><span style="background-color: #FFF2CC">[B]You are an average user.</span><span style="background-color: #FFF2CC">[B]You are a visualization expert.</span></td>
+        <td><span style="background-color: #FFF2CC">[B]You are a visualization expert.</span></td>
         <td>/</td>
-        <td><span style="background-color: #cbf1ca">[A]Please answer the question in the image and give your reason for the answer.</span>
+        <td>
         <span style="background-color: #cbf1ca">[A]Please rate the item on a scale of 1 (not relevant) to 4 (highly relevant) based on the image and give your reason. </span><span style="background-color: #a8f0a7">[A]The relevance meaning that differences in ability (i.e., the ability to read, interpret, and reason about erroneous or potentially misleading visualizations) should lead to differences in measurement outcomes (i.e., correctness). High relevance indicates that this visualization and task contain high-related misleading elements.</span></td>
         <td>In Task</td>
     </tr>
