@@ -14,7 +14,6 @@ Each folder (except for the `Fit Estimation/` folder, see `README.md` in `Fit Es
 
 ### Experiment name (in alphabetical order)
 
-+ `Literacy in Visualizations/` --- CALVI: Critical Thinking Assessment for Literacy in Visualizations
 + `Fit Estimation/` ---  Visual Model Fit Estimation in Scatterplots: Influence of Amount and Decentering of Noise
 + `Magnitude Judgement/` ---  Magnitude Judgements Are Influenced by the Relative Positions of Data Points Within Axis Limits
 + `Texture/` --- Design Characterization for Black-and-White Textures in Visualization

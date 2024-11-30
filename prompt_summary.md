@@ -56,12 +56,4 @@
         <td><span style="background-color: #cbf1ca">[A]The graph below shows the chance of damage to the item for three randomly selected airlines. Task: If you fly with one of these airlines... What is the chance your item is damaged? Answer on a scale from 1(very unlikely) to 7(very likely). What is the severity of consequences if your item is damaged? Answer on a scale from 1(very mild) to 7(very severe).For each question, please rate each graph with only one score.</span> <span style="background-color: #a8f0a7">[A]Notice that the arrow on the "Chance" axis points downwards, meaning the numbers get bigger as the axis goes down.Rate the following two graphs separately and give the reason.</span></td>
         <td>In Task</td>
     </tr>
-    <tr>
-        <th>Literacy in Visualization</th>
-        <td><span style="background-color: #FFF2CC">[B]You are a visualization expert.</span></td>
-        <td>/</td>
-        <td>
-        <span style="background-color: #cbf1ca">[A]Please rate the item on a scale of 1 (not relevant) to 4 (highly relevant) based on the image and give your reason. </span><span style="background-color: #a8f0a7">[A]The relevance meaning that differences in ability (i.e., the ability to read, interpret, and reason about erroneous or potentially misleading visualizations) should lead to differences in measurement outcomes (i.e., correctness). High relevance indicates that this visualization and task contain high-related misleading elements.</span></td>
-        <td>In Task</td>
-    </tr>
 </table>
