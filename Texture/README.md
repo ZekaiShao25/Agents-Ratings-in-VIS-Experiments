@@ -1,5 +1,11 @@
 # Texture
 
+## Information
+
+| Paper Title (with link)                                                                                           | Authors   | Venue     | OSF Repo Link |
+|--------------------------------------------------------------------------------------------------------------------|-----------|-----------|----------------|
+| [Design Characterization for Black-and-White Textures in Visualization](https://doi.org/10.1109/TVCG.2023.3326941)                                        |Tingying He , Yuanyang Zhong , Petra Isenberg , Tobias Isenberg           |IEEE TVCG           |<https://osf.io/r4z2p>                |
+
 ## experiment_code.ipynb
 
 1. If you want to run our code, please install the dependencies according to `requirement.txt` and fill in your openai key first.

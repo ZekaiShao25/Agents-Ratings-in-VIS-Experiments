@@ -1,5 +1,11 @@
 # Timeline
 
+## Information
+
+| Paper Title (with link)                                                                                           | Authors   | Venue     | OSF Repo Link |
+|--------------------------------------------------------------------------------------------------------------------|-----------|-----------|----------------|
+| [Evaluating the Effect of Timeline Shape on Visualization Task Performance](https://dl.acm.org/doi/10.1145/3313831.3376237)                                    |Sara Di Bartolomeo , Aditeya Pandey , Aristotelis Leventidis , David Saffo , Uzma Haque Syeda , Elin Carstensdottir , Magy Seif El-Nasr , Michelle A. Borkin , Cody Dunne           |ACM CHI           |<https://osf.io/qr5yu/>                |
+
 ## experiment_code.ipynb
 
 1. If you want to run our code, please install the dependencies according to `requirement.txt` and fill in your openai key first.

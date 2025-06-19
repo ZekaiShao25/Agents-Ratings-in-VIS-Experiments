@@ -14,12 +14,14 @@ Each folder (except for the `Fit Estimation/` folder, see `README.md` in `Fit Es
 
 ### Experiment name (in alphabetical order)
 
-+ `Fit Estimation/` ---  Visual Model Fit Estimation in Scatterplots: Influence of Amount and Decentering of Noise
-+ `Magnitude Judgement/` ---  Magnitude Judgements Are Influenced by the Relative Positions of Data Points Within Axis Limits
-+ `Texture/` --- Design Characterization for Black-and-White Textures in Visualization
-+ `Time Series/` --- Investigating Time Series Visualisations to Improve the User Experience
-+ `Timeline/` --- Evaluating the Effect of Timeline Shape on Visualization Task Performance
-+ `Imputation for Uncertainty/` --- Evaluating the Use of Uncertainty Visualisations for Imputations of Data Missing At Random in Scatterplots
+| Folder Path                      | Paper Title (with link)                                                                                           | Authors   | Venue     | OSF Repo Link |
+|----------------------------------|--------------------------------------------------------------------------------------------------------------------|-----------|-----------|----------------|
+| `Fit Estimation/`               | [Visual Model Fit Estimation in Scatterplots: Influence of Amount and Decentering of Noise](https://doi.org/10.1109/TVCG.2021.3051853)                     |Daniel Reimann , Christine Blech , Nilam Ram, and Robert Gaschler           |IEEE TVCG           |<https://osf.io/fbsh7/>                |
+| `Imputation for Uncertainty/`   | [Evaluating the Use of Uncertainty Visualisations for Imputations of Data Missing At Random in Scatterplots](https://doi.org/10.1109/TVCG.2022.3209348)   |Abhraneel Sarma, Shunan Guo, Jane Hoffswell, Ryan Rossi, Fan Du, Eunyee Koh, and Matthew Kay           |IEEE TVCG           |<https://osf.io/q4y5r/>                |
+| `Magnitude Judgement/`          | [Magnitude Judgements Are Influenced by the Relative Positions of Data Points Within Axis Limits](https://doi.org/10.1109/TVCG.2024.3364069)              |Duncan Bradley, Gabriel Strain, Caroline Jay, and Andrew J. Stewart           |IEEE TVCG           |<https://osf.io/3epm2/>                |
+| `Texture/`                      | [Design Characterization for Black-and-White Textures in Visualization](https://doi.org/10.1109/TVCG.2023.3326941)                                        |Tingying He , Yuanyang Zhong , Petra Isenberg , Tobias Isenberg           |IEEE TVCG           |<https://osf.io/r4z2p>                |
+| `Time Series/`                  | [Investigating Time Series Visualisations to Improve the User Experience](https://dl.acm.org/doi/10.1145/2858036.2858300)                                      |Muhammad Adnan, Mike Just, Lynne Baillie           |ACM CHI           |-                |
+| `Timeline/`                     | [Evaluating the Effect of Timeline Shape on Visualization Task Performance](https://dl.acm.org/doi/10.1145/3313831.3376237)                                    |Sara Di Bartolomeo , Aditeya Pandey , Aristotelis Leventidis , David Saffo , Uzma Haque Syeda , Elin Carstensdottir , Magy Seif El-Nasr , Michelle A. Borkin , Cody Dunne           |ACM CHI           |<https://osf.io/qr5yu/>                |
 
 ## Other supplemental materials
 

@@ -1,5 +1,11 @@
 # Fit Estimation
 
+## Information
+
+| Paper Title (with link)                                                                                           | Authors   | Venue     | OSF Repo Link |
+|--------------------------------------------------------------------------------------------------------------------|-----------|-----------|----------------|
+| [Visual Model Fit Estimation in Scatterplots: Influence of Amount and Decentering of Noise](https://doi.org/10.1109/TVCG.2021.3051853)                     |Daniel Reimann , Christine Blech , Nilam Ram, and Robert Gaschler           |IEEE TVCG           |<https://osf.io/fbsh7/>                |
+
 ## new user study
 
 `snapshot.png` --- a snapshot of the interface for the new user study

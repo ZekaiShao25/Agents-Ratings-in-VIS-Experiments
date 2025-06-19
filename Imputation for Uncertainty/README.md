@@ -1,5 +1,11 @@
 # Imputation for Uncertainty
 
+## Information
+
+| Paper Title (with link)                                                                                           | Authors   | Venue     | OSF Repo Link |
+|--------------------------------------------------------------------------------------------------------------------|-----------|-----------|----------------|
+| [Evaluating the Use of Uncertainty Visualisations for Imputations of Data Missing At Random in Scatterplots](https://doi.org/10.1109/TVCG.2022.3209348)   |Abhraneel Sarma, Shunan Guo, Jane Hoffswell, Ryan Rossi, Fan Du, Eunyee Koh, and Matthew Kay           |IEEE TVCG           |<https://osf.io/q4y5r/>                |
+
 ## experiment_code.ipynb
 
 1. If you want to run our code, please install the dependencies according to `requirement.txt` and fill in your openai key first.

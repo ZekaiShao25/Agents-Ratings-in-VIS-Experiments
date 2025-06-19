@@ -1,5 +1,11 @@
 # Time Series
 
+## Information
+
+| Paper Title (with link)                                                                                           | Authors   | Venue     | OSF Repo Link |
+|--------------------------------------------------------------------------------------------------------------------|-----------|-----------|----------------|
+| [Investigating Time Series Visualisations to Improve the User Experience](https://dl.acm.org/doi/10.1145/2858036.2858300)                                      |Muhammad Adnan, Mike Just, Lynne Baillie           |ACM CHI           |-                |
+
 ## experiment_code.ipynb
 
 1. If you want to run our code, please install the dependencies according to `requirement.txt` and fill in your openai key first.

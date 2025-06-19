@@ -1,5 +1,11 @@
 # Magnitude Judgement
 
+## Information
+
+| Paper Title (with link)                                                                                           | Authors   | Venue     | OSF Repo Link |
+|--------------------------------------------------------------------------------------------------------------------|-----------|-----------|----------------|
+| [Magnitude Judgements Are Influenced by the Relative Positions of Data Points Within Axis Limits](https://doi.org/10.1109/TVCG.2024.3364069)              |Duncan Bradley, Gabriel Strain, Caroline Jay, and Andrew J. Stewart           |IEEE TVCG           |<https://osf.io/3epm2/>                |
+
 ## experiment_code.ipynb
 
 1. If you want to run our code, please install the dependencies according to `requirement.txt` and fill in your openai key first.
