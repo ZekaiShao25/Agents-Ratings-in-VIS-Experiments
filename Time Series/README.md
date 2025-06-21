@@ -13,4 +13,4 @@
 3. In the part of **Prompt Preparation**, we provide all the prompts that will be used later. All variable names in prompts are capitalized. If you wish to learn more about the specifics of the prompts we design, you can peruse this section.
 4. In the part of **Data Preparation**, we show how to get the required data and images from the experimental materials folder `./experiment_material`. If you wish to replace the data with your own, check the type of the original data first and make sure that your data and the original data type are identical.
 5. In the part of **Task Execution**, we show how to combine prompts and data to accomplish tasks. The experiment logs will be stored in a file named `fit.json` in the same directory.
-6. In the part of **Additional Experience**, we show the code that uses automatical knowledge injection to improve the ability of the agent. The results of the experiment are also recorded in the `time_series.json`.
+6. In the part of **Additional Experiment**, we show the code that uses automatical knowledge injection to improve the ability of the agent. The results of the experiment are also recorded in the `time_series.json`.
